@@ -11,7 +11,7 @@ class FeatureContext implements Context {
 
 	/** @BeforeScenario */
 	public function before() {
-		$this->executeOccCommand('config:app:delete limit_login_to_ip blocked.ranges');
+		$this->executeOccCommand('config:app:delete limit_login_to_ip whitelisted.ranges');
 
 		$jar = new \GuzzleHttp\Cookie\FileCookieJar('/tmp/cookies_' . md5(openssl_random_pseudo_bytes(12)));
 		$this->client = new \GuzzleHttp\Client([
@@ -26,7 +26,7 @@ class FeatureContext implements Context {
 
 	/** @AfterScenario */
 	public function after() {
-		$this->executeOccCommand('config:app:delete limit_login_to_ip blocked.ranges');
+		$this->executeOccCommand('config:app:delete limit_login_to_ip whitelisted.ranges');
 	}
 
 	/**
@@ -40,7 +40,7 @@ class FeatureContext implements Context {
 	 * @Given The range :range is permitted
 	 */
 	public function theRangeIsPermitted($range) {
-		$this->executeOccCommand('config:app:set limit_login_to_ip blocked.ranges --value '. $range);
+		$this->executeOccCommand('config:app:set limit_login_to_ip whitelisted.ranges --value '. $range);
 	}
 
 	/**

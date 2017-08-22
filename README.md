@@ -8,8 +8,8 @@ separated by comma.
 
 For example to whitelist `127.0.0.0/24`: 
 
-- `occ config:app:set limit_login_to_ip blocked.ranges --value 127.0.0.0/24`
+- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24`
 
 To whitelist `127.0.0.0/24` and also `192.168.0.0/24`: 
 
-- `occ config:app:set limit_login_to_ip blocked.ranges --value 127.0.0.0/24,192.168.0.0/24`
+- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24,192.168.0.0/24`
