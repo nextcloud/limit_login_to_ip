@@ -60,9 +60,6 @@ pipeline:
   integration-tests:
     image: nextcloudci/php7.0:php7.0-2
     environment:
-      - CORE_BRANCH=master
-    commands:
-  environment:
       - APP_NAME=limit_login_to_ip
       - CORE_BRANCH=master
       - DB=sqlite
@@ -80,11 +77,8 @@ pipeline:
   integration-tests-stable12:
     image: nextcloudci/php7.0:php7.0-2
     environment:
-      - CORE_BRANCH=stable12
-    commands:
-  environment:
       - APP_NAME=limit_login_to_ip
-      - CORE_BRANCH=master
+      - CORE_BRANCH=stable12
       - DB=sqlite
     commands:
       # Pre-setup steps
@@ -100,11 +94,8 @@ pipeline:
   integration-tests-stable11:
     image: nextcloudci/php7.0:php7.0-2
     environment:
-      - CORE_BRANCH=stable11
-    commands:
-  environment:
       - APP_NAME=limit_login_to_ip
-      - CORE_BRANCH=master
+      - CORE_BRANCH=stable11
       - DB=sqlite
     commands:
       # Pre-setup steps
@@ -124,5 +115,5 @@ matrix:
     - TESTS: check-app-compatbility-stable12
     - TESTS: signed-off-check
     - TESTS: integration-tests
-    - TESTS: integration-tests-stable12
+    - TESTS: integration-tests-stable11
     - TESTS: integration-tests-stable12

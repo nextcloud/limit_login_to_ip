@@ -64,7 +64,7 @@ class LoginHookListener {
 	 * @return bool
 	 */
 	public function isLoginAllowed() {
-		$allowedRanges = $this->config->getAppValue('limit_login_to_ip', 'blocked.ranges', '');
+		$allowedRanges = $this->config->getAppValue('limit_login_to_ip', 'whitelisted.ranges', '');
 		if($allowedRanges === '') {
 			return true;
 		}
