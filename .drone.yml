@@ -76,7 +76,7 @@ pipeline:
         TESTS: integration-tests
   integration-tests-stable12:
     image: nextcloudci/php7.0:php7.0-2
-  environment:
+    environment:
       - APP_NAME=limit_login_to_ip
       - CORE_BRANCH=stable12
       - DB=sqlite
