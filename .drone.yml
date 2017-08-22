@@ -115,5 +115,5 @@ matrix:
     - TESTS: check-app-compatbility-stable12
     - TESTS: signed-off-check
     - TESTS: integration-tests
-    - TESTS: integration-tests-stable12
+    - TESTS: integration-tests-stable11
     - TESTS: integration-tests-stable12
