@@ -21,5 +21,6 @@
 ?>
 
 <div class="error">
-	<?php p('Login from your IP is not permitted.'); ?>
+	<h2><?php p($l->t('Not authorized')) ?></h2>
+	<p><?php p('Login from your IP is not permitted.'); ?></p>
 </div>
