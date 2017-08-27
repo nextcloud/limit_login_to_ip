@@ -19,8 +19,7 @@ $loginHookListener = new \OCA\LimitLoginToIp\LoginHookListener(
 
 if(!$loginHookListener->isLoginAllowed()) {
 	if($isLoginpage) {
-		$url = $urlGenerator->linkToRouteAbsolute('limit_login_to_ip.LoginDenied.showErrorPage');
-		header('Location: ' . $url);
+		header('Location: ' . \OC::$WEBROOT . '/index.php/apps/limit_login_to_ip/denied');
 		exit();
 	}
 
