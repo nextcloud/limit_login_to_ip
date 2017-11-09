@@ -2,16 +2,31 @@
 <info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
 	  xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
 	<id>limit_login_to_ip</id>
-	<name>Limit Login to IP</name>
-	<summary>Limit Login to IP addresses</summary>
-	<description>Limit login to IP addresses</description>
+	<name>Restrict login to IP addresses</name>
+	<summary>Allows administrators to restrict logins to their instance to specific IP ranges.</summary>
+	<description><![CDATA[This app allows administrators to restrict login to their
+Nextcloud server to specific IP ranges. Note that existing sessions will be kept
+open.
+
+The allowed IP ranges can be administrated using the OCC command line interface
+or graphical using the admin settings. If you plan to use the OCC tool, the
+following commands would be applicable.
+
+To whitelist `127.0.0.0/24`:
+
+- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24`
+
+To whitelist `127.0.0.0/24` and also `192.168.0.0/24`:
+
+- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24,192.168.0.0/24`
+]]></description>
 	<version>1.0.2</version>
 	<licence>agpl</licence>
 	<author>Lukas Reschke</author>
 	<namespace>LimitLoginToIp</namespace>
 	<category>security</category>
 	<website>https://github.com/nextcloud-gmbh/limit_login_to_ip</website>
-	<bugs>https://support.nextcloud.com</bugs>
+	<bugs>https://github.com/nextcloud/limit_login_to_ip/issues</bugs>
 	<repository>https://github.com/nextcloud-gmbh/limit_login_to_ip.git</repository>
 	<dependencies>
 		<php min-version="5.6" max-version="7.1" />
@@ -20,6 +35,8 @@
 	<types>
 		<filesystem/>
 	</types>
+	<screenshot>https://raw.githubusercontent.com/nextcloud/bruteforcesettings/master/screenshots/not-authorized.png</screenshot>
+	<screenshot>https://raw.githubusercontent.com/nextcloud/bruteforcesettings/master/screenshots/admin-settings.png</screenshot>
 	<settings>
 		<admin>OCA\LimitLoginToIp\Settings\LimitSettings</admin>
 	</settings>
