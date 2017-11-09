@@ -35,8 +35,8 @@ To whitelist `127.0.0.0/24` and also `192.168.0.0/24`:
 	<types>
 		<filesystem/>
 	</types>
-	<screenshot>https://raw.githubusercontent.com/nextcloud/bruteforcesettings/master/screenshots/not-authorized.png</screenshot>
-	<screenshot>https://raw.githubusercontent.com/nextcloud/bruteforcesettings/master/screenshots/admin-settings.png</screenshot>
+	<screenshot>https://raw.githubusercontent.com/nextcloud/limit_login_to_ip/master/screenshots/not-authorized.png</screenshot>
+	<screenshot>https://raw.githubusercontent.com/nextcloud/limit_login_to_ip/master/screenshots/admin-settings.png</screenshot>
 	<settings>
 		<admin>OCA\LimitLoginToIp\Settings\LimitSettings</admin>
 	</settings>
