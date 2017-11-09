@@ -5,7 +5,7 @@
 	<name>Limit Login to IP</name>
 	<summary>Limit Login to IP addresses</summary>
 	<description>Limit login to IP addresses</description>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 	<licence>agpl</licence>
 	<author>Lukas Reschke</author>
 	<namespace>LimitLoginToIp</namespace>
@@ -20,4 +20,7 @@
 	<types>
 		<filesystem/>
 	</types>
+	<settings>
+		<admin>OCA\LimitLoginToIp\Settings\LimitSettings</admin>
+	</settings>
 </info>
