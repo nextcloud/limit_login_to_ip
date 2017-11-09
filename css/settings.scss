@@ -1,0 +1,23 @@
+#limit-login-to-ip-list-spinner {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#limit-login-to-ip-list {
+  min-width: 262px;
+}
+
+#limit-login-to-ip-list td span {
+  padding: 10px 15px;
+  display: inline-block;
+}
+
+#limit-login-to-ip-list .action-column {
+  width: 46px;
+}
+
+#limit-login-to-ip-list .action-column a {
+  display: inline-block;
+}
