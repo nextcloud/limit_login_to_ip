@@ -1,0 +1,9 @@
+{ "translations": {
+    "Delete" : "Eyða",
+    "Restrict login to IP addresses" : "Takmarka innskráningu við IP-vistföng",
+    "Restrict login to IP ranges" : "Takmarka innskráningu við röð IP-vistfanga",
+    "By default, %s permits logging-in from any IP address. To limit logins to specific IP ranges, you can specify those below." : "Sjálfgefið leyfir %s innskráningu frá hvaða IP-vistfangi sem er. Til að takmarka innskráningu við tiltekna röð IP-vistfanga, geturðu tilgreint þau hér fyrir neðan.",
+    "Add" : "Bæta við",
+    "Not authorized" : "Ekki heimilt"
+},"pluralForm" :"nplurals=2; plural=(n % 10 != 1 || n % 100 == 11);"
+}

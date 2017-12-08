@@ -1,0 +1,8 @@
+{ "translations": {
+    "Delete" : "Διαγραφή",
+    "Restrict login to IP addresses" : "Περιορισμένη σύνδεση σε διευθύνσεις IP",
+    "Restrict login to IP ranges" : "Περιορισμένη σύνδεση σε διευθύνσεις IP",
+    "Add" : "Προσθήκη",
+    "Not authorized" : "Μη έγκυρος"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}
