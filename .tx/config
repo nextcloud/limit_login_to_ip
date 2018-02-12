@@ -4,6 +4,6 @@ lang_map = bg_BG: bg, cs_CZ: cs, fi_FI: fi, hu_HU: hu, nb_NO: nb, sk_SK: sk, th_
 
 [nextcloud.limit_login_to_ip]
 file_filter = <lang>/limit_login_to_ip.po
-source_file = templates/limit_login_to_ip.pot
+source_file = translationfiles/templates/limit_login_to_ip.pot
 source_lang = en
 type = PO
