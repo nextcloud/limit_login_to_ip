@@ -24,19 +24,19 @@ To whitelist `127.0.0.0/24` and also `192.168.0.0/24`:
 	<licence>agpl</licence>
 	<author>Lukas Reschke</author>
 	<namespace>LimitLoginToIp</namespace>
+	<types>
+		<filesystem/>
+	</types>
 	<category>security</category>
 	<website>https://github.com/nextcloud/limit_login_to_ip</website>
 	<bugs>https://github.com/nextcloud/limit_login_to_ip/issues</bugs>
 	<repository>https://github.com/nextcloud/limit_login_to_ip.git</repository>
+	<screenshot>https://raw.githubusercontent.com/nextcloud/limit_login_to_ip/master/screenshots/not-authorized.png</screenshot>
+	<screenshot>https://raw.githubusercontent.com/nextcloud/limit_login_to_ip/master/screenshots/admin-settings.png</screenshot>
 	<dependencies>
 		<php min-version="5.6" max-version="7.2" />
 		<nextcloud min-version="13" max-version="14" />
 	</dependencies>
-	<types>
-		<filesystem/>
-	</types>
-	<screenshot>https://raw.githubusercontent.com/nextcloud/limit_login_to_ip/master/screenshots/not-authorized.png</screenshot>
-	<screenshot>https://raw.githubusercontent.com/nextcloud/limit_login_to_ip/master/screenshots/admin-settings.png</screenshot>
 	<settings>
 		<admin>OCA\LimitLoginToIp\Settings\LimitSettings</admin>
 	</settings>
