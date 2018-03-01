@@ -52,7 +52,16 @@ class LoginHookListener {
 	 * @copyright https://stackoverflow.com/questions/594112/matching-an-ip-to-a-cidr-mask-in-php-5/594134#594134
 	 */
 	private function matchCidr($ip, $range) {
+		if ($range === '') {
+			return false;
+		}
+
 		list ($subnet, $bits) = explode('/', $range);
+
+		if ($bits === '') {
+			$bits = 32;
+		}
+
 		$ip = ip2long($ip);
 		$subnet = ip2long($subnet);
 		$mask = -1 << (32 - $bits);
