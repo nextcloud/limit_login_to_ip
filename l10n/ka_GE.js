@@ -8,4 +8,4 @@ OC.L10N.register(
     "Add" : "დამატება",
     "Not authorized" : "არ არის დაშვებული"
 },
-"nplurals=2; plural=(n==1);");
+"nplurals=2; plural=(n!=1);");
