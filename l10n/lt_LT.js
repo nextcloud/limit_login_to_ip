@@ -3,6 +3,8 @@ OC.L10N.register(
     {
     "Delete" : "Ištrinti",
     "Restrict login to IP addresses" : "Apriboti prisijungimą iki IP adresų",
+    "Allows administrators to restrict logins to their instance to specific IP ranges." : "Leidžia administratoriams apriboti prisijungimus prie konkrečių IP adresų rėžių.",
+    "This app allows administrators to restrict login to their\nNextcloud server to specific IP ranges. Note that existing sessions will be kept\nopen.\n\nThe allowed IP ranges can be administrated using the OCC command line interface\nor graphical using the admin settings. If you plan to use the OCC tool, the\nfollowing commands would be applicable.\n\nTo whitelist `127.0.0.0/24`:\n\n- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24`\n\nTo whitelist `127.0.0.0/24` and also `192.168.0.0/24`:\n\n- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24,192.168.0.0/24`" : "Leidžia administratoriams apriboti prisijungimus prie \nNextcloud konkrečių IP adresų rėžių. Egzistuojančios sesijos bus laikomos \naktyvios.\n\nLeidžiami IP rėžiai gali būti administruojami naudojant OCC komandinę eilutę\narba grafinę administratoriaus sąsają.",
     "Restrict login to IP ranges" : "Apriboti prisijungimą iki IP rėžių",
     "By default, %s permits logging-in from any IP address. To limit logins to specific IP ranges, you can specify those below." : "Pagal numatymą, %s leidžia prisijungti iš bet kurio IP adreso. Norėdami apriboti prisijungimus iki tam tikrų IP rėžių, galite nurodyti juos žemiau.",
     "Add" : "Pridėti",
