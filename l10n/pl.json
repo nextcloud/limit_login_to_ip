@@ -1,6 +1,7 @@
 { "translations": {
     "Delete" : "Usuń",
     "Restrict login to IP addresses" : "Ogranicz logowanie do adresów IP",
+    "Allows administrators to restrict logins to their instance to specific IP ranges." : "Umożliwia wskazanie adresów IP z których może nastąpić logowanie.",
     "Restrict login to IP ranges" : "Ogranicz logowanie do zakresów IP",
     "By default, %s permits logging-in from any IP address. To limit logins to specific IP ranges, you can specify those below." : "Domyślnie %s zezwala na logowanie z dowolnego adresu IP. Aby ograniczyć logowania dla specyficznych zakresów IP, możesz to zrobić poniżej.",
     "Add" : "Dodaj",
