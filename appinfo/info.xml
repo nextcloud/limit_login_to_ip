@@ -9,7 +9,7 @@ Nextcloud server to specific IP ranges. Note that existing sessions will be kept
 open.
 
 The allowed IP ranges can be administrated using the OCC command line interface
-or graphical using the admin settings. If you plan to use the OCC tool, the
+or graphically using the admin settings. If you plan to use the OCC tool, the
 following commands would be applicable.
 
 To whitelist `127.0.0.0/24`:
