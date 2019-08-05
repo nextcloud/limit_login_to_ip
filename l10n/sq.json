@@ -1,5 +1,7 @@
 { "translations": {
     "Delete" : "Fshij",
-    "Add" : "Shto"
+    "Restrict login to IP addresses" : "Hyrje e kufizuar të IP adresave ",
+    "Add" : "Shto",
+    "Not authorized" : "E paautorizuar"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
