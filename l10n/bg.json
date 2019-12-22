@@ -1,4 +1,6 @@
 { "translations": {
-    "Delete" : "Изтриване"
+    "Delete" : "Изтриване",
+    "Add" : "Добавяне",
+    "Not authorized" : "Не е разрешен"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
