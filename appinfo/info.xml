@@ -34,8 +34,8 @@ To whitelist `127.0.0.0/24` and also `192.168.0.0/24`:
 	<screenshot>https://raw.githubusercontent.com/nextcloud/limit_login_to_ip/master/screenshots/not-authorized.png</screenshot>
 	<screenshot>https://raw.githubusercontent.com/nextcloud/limit_login_to_ip/master/screenshots/admin-settings.png</screenshot>
 	<dependencies>
-		<php min-version="7.0" max-version="7.3" />
-		<nextcloud min-version="14" max-version="17" />
+		<php min-version="7.0" max-version="7.4" />
+		<nextcloud min-version="14" max-version="18" />
 	</dependencies>
 	<settings>
 		<admin>OCA\LimitLoginToIp\Settings\LimitSettings</admin>
