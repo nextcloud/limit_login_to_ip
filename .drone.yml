@@ -3,7 +3,7 @@ name: check-app-compatbility
 
 steps:
   - name: check-app-compatbility
-    image: nextcloudci/php7.1:php7.1-16
+    image: nextcloudci/php7.4:2
     environment:
       APP_NAME: limit_login_to_ip
       CORE_BRANCH: master
@@ -31,8 +31,8 @@ kind: pipeline
 name: integration-tests
 
 steps:
-  - name: integration-tests
-    image: nextcloudci/php7.1:php7.1-16
+  - name: integration-tests 7.4
+    image: nextcloudci/php7.4:2
     environment:
       APP_NAME: limit_login_to_ip
       CORE_BRANCH: master

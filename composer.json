@@ -1,0 +1,12 @@
+{
+	"name": "nextcloud/limit_login_to_ip",
+	"description": "Lint config for nextcloud/limit_login_to_ip",
+	"license": "MIT",
+	"config": {
+	  "optimize-autoloader": true,
+	  "classmap-authoritative": true
+	},
+	"scripts": {
+	  "lint": "find . -name \\*.php -not -path './vendor/*' -exec php -l \"{}\" \\;"
+	}
+  }
