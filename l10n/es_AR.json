@@ -1,0 +1,6 @@
+{ "translations": {
+    "Delete" : "Eliminar",
+    "Add" : "Añadir",
+    "Not authorized" : "No autorizado"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}
