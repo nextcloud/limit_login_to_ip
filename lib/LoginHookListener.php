@@ -98,7 +98,9 @@ class LoginHookListener {
 			 $binMask = str_pad($binMask, 32, '0');
 			 $binMask = pack("H*", $binMask);
 
-			 return ($ip & $binMask) == $subnet;
+			 if ( ($ip & $binMask) == $subnet ) {
+				 return true;
+			 }
 		}
 		return false;
 	 }
