@@ -45,29 +45,63 @@ class LoginHookListener {
 		$this->isLoginPage = $isLoginPage;
 	}
 
+	private function isIpv4($ip) {
+		return filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
+	}
+
+	private function isIpv6($ip) {
+		return filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6);
+	}
+
 	/**
 	 * @param $ip
 	 * @param $range
 	 * @return bool
 	 * @copyright https://stackoverflow.com/questions/594112/matching-an-ip-to-a-cidr-mask-in-php-5/594134#594134
+	 * @copyright (IPv4) https://stackoverflow.com/questions/594112/matching-an-ip-to-a-cidr-mask-in-php-5/594134#594134
+	 * @copyright (IPv6) MW. https://stackoverflow.com/questions/7951061/matching-ipv6-address-to-a-cidr-subnet via 
 	 */
 	private function matchCidr($ip, $range) {
-		if ($range === '') {
-			return false;
+		list($subnet, $bits) = explode('/', $range);
+
+		if ($this->isIpv4($ip) && $this->isIpv4($subnet)) {
+			if ($bits === '') {
+				$bits = 32;
+			}
+			$mask = -1 << (32 - $bits);
+
+			$ip = ip2long($ip);
+			$subnet = ip2long($subnet);
+			$subnet &= $mask;
+			return ($ip & $mask) === $subnet;
 		}
 
-		list ($subnet, $bits) = explode('/', $range);
+		if ($this->isIpv6($ip) && $this->isIPv6($subnet)) {
+			$subnet = inet_pton($subnet);
+			$ip = inet_pton($ip);
 
-		if ($bits === '') {
-			$bits = 32;
+			$binMask = str_repeat("f", $bits / 4);
+			switch ($bits % 4) {
+				case 0:
+					break;
+				case 1:
+					$binMask .= "8";
+					break;
+				case 2:
+					$binMask .= "c";
+					break;
+				case 3:
+					$binMask .= "e";
+					break;
+			 }
+
+			 $binMask = str_pad($binMask, 32, '0');
+			 $binMask = pack("H*", $binMask);
+
+			 return ($ip & $binMask) == $subnet;
 		}
-
-		$ip = ip2long($ip);
-		$subnet = ip2long($subnet);
-		$mask = -1 << (32 - $bits);
-		$subnet &= $mask;
-		return ($ip & $mask) === $subnet;
-	}
+		return false;
+	 }
 
 	/**
 	 * @return bool
