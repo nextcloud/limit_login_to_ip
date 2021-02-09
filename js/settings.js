@@ -35,7 +35,11 @@
 				{
 					success: function(data) {
 						var textData =  $(data).find('data data').text();
-						var ipRanges = textData.split(',');
+						var ipRanges;
+						if( textData === '')
+							ipRanges = []
+						else
+							ipRanges = textData.split(',');
 						var table = document.getElementById('limit-login-to-ip-list');
 						table.innerHTML = '';
 
@@ -70,7 +74,11 @@
 				{
 					success: function(data) {
 						var textData =  $(data).find('data data').text();
-						var UIDs = textData.split(',');
+						var UIDs;
+						if( textData === '')
+							UIDs = []
+						else
+							UIDs = textData.split(',');
 						var table = document.getElementById('limit-login-to-ip-uidlist');
 						table.innerHTML = '';
 
