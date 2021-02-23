@@ -1,4 +1,5 @@
 { "translations": {
+    "Restrict login to IP addresses" : "අ.ජා. කෙ. (IP) ලිපින වලට ප්‍රවේශ වීම සීමා කරන්න",
     "Add" : "එකතු කරන්න"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
