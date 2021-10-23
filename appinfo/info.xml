@@ -20,7 +20,7 @@ To whitelist `127.0.0.0/24` and also `192.168.0.0/24`:
 
 - `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24,192.168.0.0/24`
 ]]></description>
-	<version>3.1.0</version>
+	<version>3.1.1</version>
 	<licence>agpl</licence>
 	<author>Lukas Reschke</author>
 	<namespace>LimitLoginToIp</namespace>
@@ -35,7 +35,7 @@ To whitelist `127.0.0.0/24` and also `192.168.0.0/24`:
 	<screenshot>https://raw.githubusercontent.com/nextcloud/limit_login_to_ip/master/screenshots/admin-settings.png</screenshot>
 	<dependencies>
 		<php min-version="7.1" max-version="7.4" />
-		<nextcloud min-version="16" max-version="21" />
+		<nextcloud min-version="16" max-version="22" />
 	</dependencies>
 	<settings>
 		<admin>OCA\LimitLoginToIp\Settings\LimitSettings</admin>
