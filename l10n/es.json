@@ -7,5 +7,5 @@
     "By default, %s permits logging-in from any IP address. To limit logins to specific IP ranges, you can specify those below." : "Por defecto, %s permite el inicio de sesión desde cualquier dirección IP. Para limitar los inicios de sesión a rangos de IP específicos, puede especificarlos a continuación.",
     "Add" : "Añadir",
     "Not authorized" : "No autorizado"
-},"pluralForm" :"nplurals=2; plural=(n != 1);"
+},"pluralForm" :"nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }

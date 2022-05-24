@@ -6,5 +6,5 @@
     "By default, %s permits logging-in from any IP address. To limit logins to specific IP ranges, you can specify those below." : "Por defeito, %s permite autenticações através de qualquer endereço IP. Para limitar a autenticação a uma gama especifica de IPs, pode fazê-lo a baixo.",
     "Add" : "Adicionar",
     "Not authorized" : "Não autorizado"
-},"pluralForm" :"nplurals=2; plural=(n != 1);"
+},"pluralForm" :"nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }
