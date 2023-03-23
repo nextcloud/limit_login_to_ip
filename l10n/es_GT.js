@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Delete" : "Borrar",
     "Restrict login to IP addresses" : "Limitar inicio de sesión a direcciónes IP",
+    "Allows administrators to restrict logins to their instance to specific IP ranges." : "Permite a los administradores restringir los inicios de sesión en su instancia a rangos de IP específicos.",
     "Restrict login to IP ranges" : "Limitar inicio de sesión a rangos de IP",
     "By default, %s permits logging-in from any IP address. To limit logins to specific IP ranges, you can specify those below." : "Por omisión, %s te permite iniciar sesión desde cualquier dirección IP. Acontinuación puedes especificar rangos de IP¨s para limitar el inicio de sesión.",
     "Add" : "Agregar",
