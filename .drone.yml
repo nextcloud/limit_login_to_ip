@@ -1,3 +1,4 @@
+---
 kind: pipeline
 name: check-app-compatbility
 
@@ -53,3 +54,6 @@ trigger:
   event:
     - pull_request
     - push
+---
+kind: signature
+hmac: 786ab56c09be8ad5056e350c9137de0b597372064060b1a29739af0290e8f5a2
