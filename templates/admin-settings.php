@@ -38,4 +38,16 @@ $defaults = new OCP\Defaults();
 		<input type="number" id="limit-login-to-ip-whitelist_mask" name="limit-login-to-ip-whitelist_mask" placeholder="24" style="width: 50px;" disabled>
 		<input type="button" id="limit-login-to-ip-submit" value="<?php p($l->t('Add')); ?>" disabled>
 	</div>
+
+	<em><?php p($l->t('These users can connect from any IP address. These are matched against the authentication username.')) ?></em>
+
+	<br/>
+	<img id="limit-login-to-ip-uidlist-spinner" src="<?php p(image_path('core', 'loading.gif')); ?>"/>
+	<table id="limit-login-to-ip-uidlist">
+	</table>
+
+	<div id="limit-login-to-ip-uid-input-fields">
+		<input type="text" name="limit-login-to-ip-uid-whitelist" id="limit-login-to-ip-uid-whitelist" placeholder="username" style="width: 200px;" disabled/>
+		<input type="button" id="limit-login-to-ip-uid-submit" value="<?php p($l->t('Add')); ?>" disabled>
+	</div>
 </form>

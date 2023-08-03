@@ -2,15 +2,16 @@
 <info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
 	  xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
 	<id>limit_login_to_ip</id>
-	<name>Restrict login to IP addresses</name>
-	<summary>Allows administrators to restrict logins to their instance to specific IP ranges.</summary>
+	<name>Restrict logins to whitelisted IP addresses or users</name>
+	<summary>Allows administrators to restrict logins to their instance by user or specific IP ranges.</summary>
 	<description><![CDATA[This app allows administrators to restrict login to their
-Nextcloud server to specific IP ranges. Note that existing sessions will be kept
-open.
+Nextcloud server to specific IP ranges, unless the user is exempted.
+Note that existing sessions will be kept open.
 
-The allowed IP ranges can be administrated using the OCC command line interface
-or graphically using the admin settings. If you plan to use the OCC tool, the
-following commands would be applicable.
+The allowed IP ranges and exempted users can be administrated using
+the OCC command line interface or graphically using the admin
+settings. If you plan to use the OCC tool, the following commands
+would be applicable.
 
 To whitelist `127.0.0.0/24`:
 
@@ -19,8 +20,12 @@ To whitelist `127.0.0.0/24`:
 To whitelist `127.0.0.0/24` and also `192.168.0.0/24`:
 
 - `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24,192.168.0.0/24`
+
+To whitelist `peter` and `john`:
+
+- `occ config:app:set limit_login_to_ip whitelisted.uids --value peter,john`
 ]]></description>
-	<version>3.1.0</version>
+	<version>4.0.0</version>
 	<licence>agpl</licence>
 	<author>Lukas Reschke</author>
 	<namespace>LimitLoginToIp</namespace>
@@ -35,7 +40,7 @@ To whitelist `127.0.0.0/24` and also `192.168.0.0/24`:
 	<screenshot>https://raw.githubusercontent.com/nextcloud/limit_login_to_ip/master/screenshots/admin-settings.png</screenshot>
 	<dependencies>
 		<php min-version="7.1" max-version="7.4" />
-		<nextcloud min-version="16" max-version="21" />
+		<nextcloud min-version="16" max-version="22" />
 	</dependencies>
 	<settings>
 		<admin>OCA\LimitLoginToIp\Settings\LimitSettings</admin>

@@ -37,16 +37,16 @@ $loginHookListener = new \OCA\LimitLoginToIp\LoginHookListener(
 	$isLoginpage
 );
 
-if(!$loginHookListener->isLoginAllowed()) {
+if(!$loginHookListener->isIPWhiteListed() && $config->getAppValue('limit_login_to_ip', 'whitelisted.uids', '') === '') {
 	if($isLoginpage) {
 		header('Location: ' . \OC::$WEBROOT . '/index.php/apps/limit_login_to_ip/denied');
 		exit();
 	}
-
-	\OCP\Util::connectHook(
-		'OC_User',
-		'pre_login',
-		$loginHookListener,
-		'handleLoginRequest'
-	);
 }
+
+\OCP\Util::connectHook(
+    'OC_User',
+    'pre_login',
+    $loginHookListener,
+    'handleLoginRequest'
+);

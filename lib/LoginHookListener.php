@@ -108,7 +108,7 @@ class LoginHookListener {
 	/**
 	 * @return bool
 	 */
-	public function isLoginAllowed() {
+	public function isIPWhiteListed() {
 		$allowedRanges = $this->config->getAppValue('limit_login_to_ip', 'whitelisted.ranges', '');
 		if($allowedRanges === '') {
 			return true;
@@ -125,7 +125,27 @@ class LoginHookListener {
 		return false;
 	}
 
-	public function handleLoginRequest() {
+	/**
+	 * @return bool
+	 */
+	public function isUidWhiteListed($uid) {
+		$allowedUids = $this->config->getAppValue('limit_login_to_ip', 'whitelisted.uids', '');
+		if($allowedUids === '') {
+			return false;
+		}
+
+		$allowedUids = explode(',', $allowedUids);
+
+        return in_array($uid, $allowedUids, true);
+	}
+
+	public function handleLoginRequest(array $params) {
+		if ( !$this->isUidWhiteListed($params['uid']) && !$this->isIPWhiteListed() ) {
+			$this->denyLoginRequest();
+		}
+	}
+
+	public function denyLoginRequest() {
 		// Web UI
 		if($this->isLoginPage) {
 			$url = $this->urlGenerator->linkToRouteAbsolute('limit_login_to_ip.LoginDenied.showErrorPage');
