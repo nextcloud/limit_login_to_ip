@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 declare(strict_types=1);
 
 /**
@@ -27,12 +28,12 @@ use OCA\LimitLoginToIp\LoginHookListener;
 use OCP\IConfig;
 use OCP\IRequest;
 use OCP\IURLGenerator;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 class LoginHookListenerTest extends TestCase {
 	/** @var IConfig|MockObject */
-	private $config;			
+	private $config;
 	/** @var IRequest|MockObject */
 	private $request;
 	/** @var IURLGenerator|MockObject */
@@ -46,31 +47,31 @@ class LoginHookListenerTest extends TestCase {
 		$this->request = $this->createMock(IRequest::class);
 		$this->urlGenerator = $this->createMock(IURLGenerator::class);
 		
-		$this->listener = new LoginHookListener( 
-				$this->config,
-				$this->request,
-				$this->urlGenerator,
-				true,
+		$this->listener = new LoginHookListener(
+			$this->config,
+			$this->request,
+			$this->urlGenerator,
+			true,
 		);
 	}
 
 	/**
-	 * @dataProvider ipSubnetProvider 
+	 * @dataProvider ipSubnetProvider
 	 */
 	public function testMatchRange(string $ipAddress, ?string $subnet, bool $shouldBeTrue): void {
-			if (!empty($subnet)) {
-				$this->config->expects($this->once())
-					->method('getAppValue')	
-					->with('limit_login_to_ip', 'whitelisted.ranges', null)
-					->willReturn($subnet);
-				$this->request
-					->expects($this->once())
-					->method('getRemoteAddress')
-					->willReturn($ipAddress);
-			}
-			$shouldBeTrue
-				? $this->assertTrue($this->listener->isLoginAllowed())
-				: $this->assertFalse($this->listener->isLoginAllowed());
+		if (!empty($subnet)) {
+			$this->config->expects($this->once())
+				->method('getAppValue')
+				->with('limit_login_to_ip', 'whitelisted.ranges', null)
+				->willReturn($subnet);
+			$this->request
+				->expects($this->once())
+				->method('getRemoteAddress')
+				->willReturn($ipAddress);
+		}
+		$shouldBeTrue
+			? $this->assertTrue($this->listener->isLoginAllowed())
+			: $this->assertFalse($this->listener->isLoginAllowed());
 
 	}
 
@@ -89,4 +90,3 @@ class LoginHookListenerTest extends TestCase {
 	}
 
 }
-

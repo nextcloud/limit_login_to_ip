@@ -28,4 +28,3 @@ require_once __DIR__.'/../vendor/autoload.php';
 \OC_App::loadApp('limit_login_to_ip');
 
 OC_Hook::clear();
-

@@ -1,7 +1,6 @@
 <?php
 
 use Behat\Behat\Context\Context;
-use Behat\Behat\Tester\Exception\PendingException;
 
 class FeatureContext implements Context {
 	/** @var  */
@@ -18,7 +17,7 @@ class FeatureContext implements Context {
 			'cookies' => $jar,
 			'verify' => false,
 			'allow_redirects' => [
-				'referer'         => true,
+				'referer' => true,
 				'track_redirects' => true,
 			],
 		]);

@@ -19,8 +19,9 @@
  *
  */
 
-script('limit_login_to_ip', ['settings']);
-style('limit_login_to_ip', ['settings']);
+/** @var $l \OCP\IL10N */
+\OCP\Util::addStyle('limit_login_to_ip', 'settings');
+\OCP\Util::addScript('limit_login_to_ip', 'settings');
 $defaults = new OCP\Defaults();
 ?>
 

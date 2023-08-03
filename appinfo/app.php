@@ -25,20 +25,17 @@ $config = \OC::$server->getConfig();
 $request = \OC::$server->getRequest();
 $urlGenerator = \OC::$server->getURLGenerator();
 $loginUrl = $urlGenerator->linkToRouteAbsolute('core.login.showLoginForm');
-$isLoginpage = false;
-if($request->getRequestUri() === $urlGenerator->linkToRoute('core.login.showLoginForm')) {
-	$isLoginpage = true;
-}
+$isLoginPage = (parse_url($request->getRequestUri(), PHP_URL_PATH) === $urlGenerator->linkToRoute('core.login.showLoginForm'));
 
 $loginHookListener = new \OCA\LimitLoginToIp\LoginHookListener(
 	$config,
 	$request,
 	$urlGenerator,
-	$isLoginpage
+	$isLoginPage
 );
 
 if(!$loginHookListener->isLoginAllowed()) {
-	if($isLoginpage) {
+	if($isLoginPage) {
 		header('Location: ' . \OC::$WEBROOT . '/index.php/apps/limit_login_to_ip/denied');
 		exit();
 	}

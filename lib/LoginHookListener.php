@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * @copyright Copyright (c) 2017 Lukas Reschke <lukas@statuscode.ch>
  *
@@ -26,46 +28,34 @@ use OCP\IRequest;
 use OCP\IURLGenerator;
 
 class LoginHookListener {
-	/** @var IConfig */
-	private $config;
-	/** @var IRequest */
-	private $request;
-	/** @var IURLGenerator */
-	private $urlGenerator;
-	/** @var bool */
-	private $isLoginPage;
-
-	public function __construct(IConfig $config,
-								IRequest $request,
-								IURLGenerator $urlGenerator,
-								$isLoginPage) {
-		$this->config = $config;
-		$this->request = $request;
-		$this->urlGenerator = $urlGenerator;
-		$this->isLoginPage = $isLoginPage;
+	public function __construct(
+		private IConfig $config,
+		private IRequest $request,
+		private IURLGenerator $urlGenerator,
+		private bool $isLoginPage
+	) {
 	}
 
-	private function isIpv4($ip) {
-		return filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
+	private function isIpv4(string $ip): bool {
+		return (bool) filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
 	}
 
-	private function isIpv6($ip) {
-		return filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6);
+	private function isIpv6(string $ip): bool {
+		return (bool) filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6);
 	}
 
 	/**
-	 * @param $ip
-	 * @param $range
-	 * @return bool
 	 * @copyright https://stackoverflow.com/questions/594112/matching-an-ip-to-a-cidr-mask-in-php-5/594134#594134
 	 * @copyright (IPv4) https://stackoverflow.com/questions/594112/matching-an-ip-to-a-cidr-mask-in-php-5/594134#594134
-	 * @copyright (IPv6) MW. https://stackoverflow.com/questions/7951061/matching-ipv6-address-to-a-cidr-subnet via 
+	 * @copyright (IPv6) MW. https://stackoverflow.com/questions/7951061/matching-ipv6-address-to-a-cidr-subnet via
 	 */
-	private function matchCidr($ip, $range) {
-		list($subnet, $bits) = explode('/', $range);
+	private function matchCidr(string $ip, string $range): bool {
+		$range = explode('/', $range);
+		$subnet = $range[0];
+		$bits = (int) ($range[1] ?? -1);
 
 		if ($this->isIpv4($ip) && $this->isIpv4($subnet)) {
-			if ($bits === '') {
+			if ($bits === -1) {
 				$bits = 32;
 			}
 			$mask = -1 << (32 - $bits);
@@ -79,6 +69,9 @@ class LoginHookListener {
 		if ($this->isIpv6($ip) && $this->isIPv6($subnet)) {
 			$subnet = inet_pton($subnet);
 			$ip = inet_pton($ip);
+			if ($bits === -1) {
+				$bits = 128;
+			}
 
 			$binMask = str_repeat("f", $bits / 4);
 			switch ($bits % 4) {
@@ -93,23 +86,23 @@ class LoginHookListener {
 				case 3:
 					$binMask .= "e";
 					break;
-			 }
+			}
 
-			 $binMask = str_pad($binMask, 32, '0');
-			 $binMask = pack("H*", $binMask);
+			$binMask = str_pad($binMask, 32, '0');
+			$binMask = pack("H*", $binMask);
 
-			 if ( ($ip & $binMask) === $subnet ) {
-				 return true;
-			 }
+			if (($ip & $binMask) === $subnet) {
+				return true;
+			}
 		}
 		return false;
-	 }
+	}
 
 	/**
 	 * @return bool
 	 */
-	public function isLoginAllowed() {
-		$allowedRanges = $this->config->getAppValue('limit_login_to_ip', 'whitelisted.ranges', '');
+	public function isLoginAllowed(): bool {
+		$allowedRanges = (string) $this->config->getAppValue('limit_login_to_ip', 'whitelisted.ranges', '');
 		if($allowedRanges === '') {
 			return true;
 		}
@@ -125,10 +118,10 @@ class LoginHookListener {
 		return false;
 	}
 
-	public function handleLoginRequest() {
+	public function handleLoginRequest(): void {
 		// Web UI
 		if($this->isLoginPage) {
-			$url = $this->urlGenerator->linkToRouteAbsolute('limit_login_to_ip.LoginDenied.showErrorPage');
+			$url = (string) $this->urlGenerator->linkToRouteAbsolute('limit_login_to_ip.LoginDenied.showErrorPage');
 			header('Location: ' . $url);
 			exit();
 		}

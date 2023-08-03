@@ -28,6 +28,7 @@
 			"@composer bin all update --ansi"
 		],
 		"test:unit": "vendor/bin/phpunit -c tests/phpunit-unit.xml --fail-on-warning",
-		"test:unit:dev": "vendor/bin/phpunit -c tests/phpunit-unit.xml --no-coverage --order-by=defects --stop-on-defect --fail-on-warning --stop-on-error --stop-on-failure"
+		"test:unit:dev": "vendor/bin/phpunit -c tests/phpunit-unit.xml --no-coverage --order-by=defects --stop-on-defect --fail-on-warning --stop-on-error --stop-on-failure",
+		"test:integration": "cd tests/integration && ./run.sh"
 	}
 }
