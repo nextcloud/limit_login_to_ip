@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 use Behat\Behat\Context\Context;
 
@@ -9,7 +10,7 @@ class FeatureContext implements Context {
 	private $response;
 
 	/** @BeforeScenario */
-	public function before() {
+	public function before(): void {
 		$this->executeOccCommand('config:app:delete limit_login_to_ip whitelisted.ranges');
 
 		$jar = new \GuzzleHttp\Cookie\FileCookieJar('/tmp/cookies_' . md5(openssl_random_pseudo_bytes(12)));
@@ -24,31 +25,27 @@ class FeatureContext implements Context {
 	}
 
 	/** @AfterScenario */
-	public function after() {
+	public function after(): void {
 		$this->executeOccCommand('config:app:delete limit_login_to_ip whitelisted.ranges');
 	}
 
-	/**
-	 * @param string $command
-	 */
-	private function executeOccCommand($command) {
+	private function executeOccCommand(string $command): void {
 		shell_exec('php ' . __DIR__ . '/../../../../../../occ ' . $command);
 	}
 
 	/**
 	 * @Given The range :range is permitted
 	 */
-	public function theRangeIsPermitted($range) {
+	public function theRangeIsPermitted(string $range): void {
 		$this->executeOccCommand('config:app:set limit_login_to_ip whitelisted.ranges --value '. $range);
 	}
 
 	/**
 	 * @When I try to login via :endpoint
 	 *
-	 * @param string $endpoint
 	 * @throws \Exception
 	 */
-	public function iTryToLoginVia($endpoint) {
+	public function iTryToLoginVia(string $endpoint): void {
 		switch($endpoint) {
 			case 'web':
 				try {
@@ -82,7 +79,7 @@ class FeatureContext implements Context {
 	/**
 	 * @Then the response status code should be :statusCode
 	 */
-	public function theResponseStatusCodeShouldBe($statusCode) {
+	public function theResponseStatusCodeShouldBe(string $statusCode): void {
 		if((int)$statusCode !== (int)$this->response->getStatusCode()) {
 			throw new UnexpectedValueException("Expected statuscode {$statusCode}, got {$this->response->getStatusCode()}");
 		}
@@ -91,7 +88,7 @@ class FeatureContext implements Context {
 	/**
 	 * @Then the response URL should be :responseUrl
 	 */
-	public function theResponseUrlShouldBe($responseUrl) {
+	public function theResponseUrlShouldBe(string $responseUrl): void {
 		$redirectHeader = $this->response->getHeader('X-Guzzle-Redirect-History');
 		if(is_array($redirectHeader) && count($redirectHeader) > 0) {
 			$lastUrl = $redirectHeader[count($redirectHeader) - 1];
@@ -100,5 +97,4 @@ class FeatureContext implements Context {
 			}
 		}
 	}
-
 }

@@ -24,8 +24,7 @@ $l10n = \OC::$server->getL10N('limit_login_to_ip');
 $config = \OC::$server->getConfig();
 $request = \OC::$server->getRequest();
 $urlGenerator = \OC::$server->getURLGenerator();
-$loginUrl = $urlGenerator->linkToRouteAbsolute('core.login.showLoginForm');
-$isLoginPage = (parse_url($request->getRequestUri(), PHP_URL_PATH) === $urlGenerator->linkToRoute('core.login.showLoginForm'));
+$isLoginPage = parse_url($request->getRequestUri(), PHP_URL_PATH) === $urlGenerator->linkToRoute('core.login.showLoginForm');
 
 $loginHookListener = new \OCA\LimitLoginToIp\LoginHookListener(
 	$config,

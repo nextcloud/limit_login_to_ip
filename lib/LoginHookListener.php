@@ -121,7 +121,7 @@ class LoginHookListener {
 	public function handleLoginRequest(): void {
 		// Web UI
 		if($this->isLoginPage) {
-			$url = (string) $this->urlGenerator->linkToRouteAbsolute('limit_login_to_ip.LoginDenied.showErrorPage');
+			$url = $this->urlGenerator->linkToRouteAbsolute('limit_login_to_ip.LoginDenied.showErrorPage');
 			header('Location: ' . $url);
 			exit();
 		}

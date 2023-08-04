@@ -8,6 +8,9 @@
 		"sort-packages": true,
 		"allow-plugins": {
 			"bamarni/composer-bin-plugin": true
+		},
+		"platform": {
+			"php": "8.0"
 		}
 	},
 	"require": {
@@ -30,5 +33,9 @@
 		"test:unit": "vendor/bin/phpunit -c tests/phpunit-unit.xml --fail-on-warning",
 		"test:unit:dev": "vendor/bin/phpunit -c tests/phpunit-unit.xml --no-coverage --order-by=defects --stop-on-defect --fail-on-warning --stop-on-error --stop-on-failure",
 		"test:integration": "cd tests/integration && ./run.sh"
+	},
+	"require-dev": {
+		"roave/security-advisories": "dev-master",
+		"nextcloud/ocp": "dev-master"
 	}
 }
