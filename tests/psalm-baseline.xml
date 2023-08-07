@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="5.14.1@b9d355e0829c397b9b3b47d0c0ed042a8a70284d">
+  <file src="lib/Controller/LoginDeniedController.php">
+    <UndefinedClass>
+      <code>Controller</code>
+    </UndefinedClass>
+    <UnusedClass>
+      <code>LoginDeniedController</code>
+    </UnusedClass>
+  </file>
+  <file src="lib/LoginHookListener.php">
+    <UnusedClass>
+      <code>LoginHookListener</code>
+    </UnusedClass>
+  </file>
+  <file src="lib/Settings/LimitSettings.php">
+    <UnusedClass>
+      <code>LimitSettings</code>
+    </UnusedClass>
+  </file>
+</files>
