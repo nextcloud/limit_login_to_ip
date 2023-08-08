@@ -73,7 +73,7 @@ class LoginHookListener {
 				$bits = 128;
 			}
 
-			$binMask = str_repeat("f", $bits / 4);
+			$binMask = str_repeat("f", (int) ($bits / 4));
 			switch ($bits % 4) {
 				case 0:
 					break;
@@ -102,8 +102,8 @@ class LoginHookListener {
 	 * @return bool
 	 */
 	public function isLoginAllowed(): bool {
-		$allowedRanges = (string) $this->config->getAppValue('limit_login_to_ip', 'whitelisted.ranges', '');
-		if($allowedRanges === '') {
+		$allowedRanges = $this->config->getAppValue('limit_login_to_ip', 'whitelisted.ranges', '');
+		if ($allowedRanges === '') {
 			return true;
 		}
 		$allowedRanges = explode(',', $allowedRanges);

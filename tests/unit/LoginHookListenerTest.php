@@ -59,11 +59,11 @@ class LoginHookListenerTest extends TestCase {
 	 * @dataProvider ipSubnetProvider
 	 */
 	public function testMatchRange(string $ipAddress, ?string $subnet, bool $shouldBeTrue): void {
-		if (!empty($subnet)) {
-			$this->config->expects($this->once())
-				->method('getAppValue')
-				->with('limit_login_to_ip', 'whitelisted.ranges', null)
-				->willReturn($subnet);
+		$this->config->expects($this->once())
+			->method('getAppValue')
+			->with('limit_login_to_ip', 'whitelisted.ranges', '')
+			->willReturn($subnet);
+		if ($subnet !== '') {
 			$this->request
 				->expects($this->once())
 				->method('getRemoteAddress')
@@ -77,7 +77,6 @@ class LoginHookListenerTest extends TestCase {
 
 	public function ipSubnetProvider(): array {
 		return [
-			['1.2.3.4', null, true],
 			['1.2.3.4', '', true],
 			['1.2.3.4', '1.2.3.4', true],
 			['1.2.3.4', '1.2.3.4/32', true],
