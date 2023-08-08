@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * @copyright Copyright (c) 2017 Lukas Reschke <lukas@statuscode.ch>
  *
@@ -25,16 +27,15 @@ use OCP\AppFramework\Http\TemplateResponse;
 use OCP\Settings\ISettings;
 
 class LimitSettings implements ISettings {
-
-	public function getForm() {
+	public function getForm(): TemplateResponse {
 		return new TemplateResponse('limit_login_to_ip', 'admin-settings');
 	}
 
-	public function getSection() {
+	public function getSection(): string {
 		return 'security';
 	}
 
-	public function getPriority() {
+	public function getPriority(): int {
 		return 50;
 	}
 }

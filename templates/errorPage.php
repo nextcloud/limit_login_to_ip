@@ -18,9 +18,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
+/** @var $l \OCP\IL10N */
 ?>
-
-<div class="error">
+<div class="guest-box">
 	<h2><?php p($l->t('Not authorized')) ?></h2>
-	<p><?php p('Login from your IP is not permitted.'); ?></p>
+	<p class="hint"><?php p('Login from your IP is not permitted.'); ?></p>
 </div>
+

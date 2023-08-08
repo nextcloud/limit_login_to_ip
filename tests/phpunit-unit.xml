@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phpunit
+	bootstrap="bootstrap.php"
+	verbose="true"
+	convertDeprecationsToExceptions="true"
+	xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.6/phpunit.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+	<testsuite name="Limit login to IP unit tests">
+		<directory suffix="Test.php">unit</directory>
+	</testsuite>
+	<coverage>
+		<report>
+			<!-- and this is where your report will be written -->
+			<clover outputFile="./clover.xml"/>
+		</report>
+	</coverage>
+	<logging>
+	</logging>
+</phpunit>
