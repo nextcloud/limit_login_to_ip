@@ -7,15 +7,15 @@ separated by comma.
 
 For example:
 
-To whitelist `127.0.0.0/24`: 
+To allow `127.0.0.0/24`: 
 
 - `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24`
 
-To whitelist `127.0.0.0/24` and `192.168.0.0/24`: 
+To allow `127.0.0.0/24` and `192.168.0.0/24`: 
 
 - `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24,192.168.0.0/24`
 
-To whitelist `127.0.0.0/24` and also `192.168.0.0/24` as well as `2001:db8::/32`: 
+To allow `127.0.0.0/24` and also `192.168.0.0/24` as well as `2001:db8::/32`: 
 
 - `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24,192.168.0.0/24,2001:db8::/32`
 
