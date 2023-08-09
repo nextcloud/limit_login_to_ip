@@ -1,0 +1,14 @@
+.git
+.github
+.gitignore
+.nextcloudignore
+.php-cs-fixer*
+.phpactor*
+.tx
+composer.*
+krankerl.toml
+Makefile
+psalm.xml
+/tests
+/vendor/bin
+/vendor-bin
