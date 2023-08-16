@@ -23,111 +23,31 @@ declare(strict_types=1);
 
 namespace OCA\LimitLoginToIp;
 
-use OCP\IConfig;
-use OCP\IRequest;
-use OCP\IURLGenerator;
+use OCP\EventDispatcher\Event;
+use OCP\EventDispatcher\IEventListener;
+use OCP\User\Events\BeforeUserLoggedInEvent;
+use Psr\Log\LoggerInterface;
 
-class LoginHookListener {
+/**
+ * @template-implements IEventListener<Event>
+ */
+class LoginHookListener implements IEventListener {
 	public function __construct(
-		private IConfig $config,
-		private IRequest $request,
-		private IURLGenerator $urlGenerator,
-		private bool $isLoginPage
+		private IsRequestAllowed $isRequestAllowed,
+		private LoggerInterface $logger,
 	) {
 	}
 
-	private function isIpv4(string $ip): bool {
-		return (bool) filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
-	}
-
-	private function isIpv6(string $ip): bool {
-		return (bool) filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6);
-	}
-
-	/**
-	 * @copyright https://stackoverflow.com/questions/594112/matching-an-ip-to-a-cidr-mask-in-php-5/594134#594134
-	 * @copyright (IPv4) https://stackoverflow.com/questions/594112/matching-an-ip-to-a-cidr-mask-in-php-5/594134#594134
-	 * @copyright (IPv6) MW. https://stackoverflow.com/questions/7951061/matching-ipv6-address-to-a-cidr-subnet via
-	 */
-	private function matchCidr(string $ip, string $range): bool {
-		$range = explode('/', $range);
-		$subnet = $range[0];
-		$bits = (int) ($range[1] ?? -1);
-
-		if ($this->isIpv4($ip) && $this->isIpv4($subnet)) {
-			if ($bits === -1) {
-				$bits = 32;
-			}
-			$mask = -1 << (32 - $bits);
-
-			$ip = ip2long($ip);
-			$subnet = ip2long($subnet);
-			$subnet &= $mask;
-			return ($ip & $mask) === $subnet;
+	public function handle(Event $event): void {
+		if (!$event instanceof BeforeUserLoggedInEvent || ($this->isRequestAllowed)()) {
+			return;
 		}
 
-		if ($this->isIpv6($ip) && $this->isIPv6($subnet)) {
-			$subnet = inet_pton($subnet);
-			$ip = inet_pton($ip);
-			if ($bits === -1) {
-				$bits = 128;
-			}
-
-			$binMask = str_repeat("f", (int) ($bits / 4));
-			switch ($bits % 4) {
-				case 0:
-					break;
-				case 1:
-					$binMask .= "8";
-					break;
-				case 2:
-					$binMask .= "c";
-					break;
-				case 3:
-					$binMask .= "e";
-					break;
-			}
-
-			$binMask = str_pad($binMask, 32, '0');
-			$binMask = pack("H*", $binMask);
-
-			if (($ip & $binMask) === $subnet) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	/**
-	 * @return bool
-	 */
-	public function isLoginAllowed(): bool {
-		$allowedRanges = $this->config->getAppValue('limit_login_to_ip', 'whitelisted.ranges', '');
-		if ($allowedRanges === '') {
-			return true;
-		}
-		$allowedRanges = explode(',', $allowedRanges);
-
-		$userIp = $this->request->getRemoteAddress();
-		foreach($allowedRanges as $range) {
-			if($this->matchCidr($userIp, $range)) {
-				return true;
-			}
-		}
-
-		return false;
-	}
-
-	public function handleLoginRequest(): void {
-		// Web UI
-		if($this->isLoginPage) {
-			$url = $this->urlGenerator->linkToRouteAbsolute('limit_login_to_ip.LoginDenied.showErrorPage');
-			header('Location: ' . $url);
-			exit();
-		}
-
-		// All other clients
+		$this->logger->info('Login from {username} was blocked', [
+			'username' => $event->getUsername(),
+			'backend' => $event->getBackend(),
+		]);
 		http_response_code(403);
-		exit();
+		exit;
 	}
 }
