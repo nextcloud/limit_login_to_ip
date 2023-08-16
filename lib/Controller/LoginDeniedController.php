@@ -27,13 +27,15 @@ use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\TemplateResponse;
 
+/**
+ * @psalm-api
+ */
 class LoginDeniedController extends Controller {
 	/**
 	 * @PublicPage
 	 * @NoCSRFRequired
-	 * @return TemplateResponse
 	 */
-	public function showErrorPage() {
+	public function showErrorPage(): TemplateResponse {
 		$response = new TemplateResponse(
 			$this->appName,
 			'errorPage',

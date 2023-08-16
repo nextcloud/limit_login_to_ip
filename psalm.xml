@@ -10,24 +10,23 @@
 	errorBaseline="tests/psalm-baseline.xml"
 >
 	<projectFiles>
-		<directory name="appinfo" />
-		<directory name="lib" />
+		<directory name="appinfo"/>
+		<directory name="lib"/>
 		<ignoreFiles>
-			<directory name="vendor" />
+			<directory name="vendor"/>
 		</ignoreFiles>
 	</projectFiles>
 	<extraFiles>
-		<directory name="vendor" />
+		<directory name="vendor"/>
 	</extraFiles>
 	<issueHandlers>
 		<DeprecatedMethod>
-			<errorLevel type="error" />
+			<errorLevel type="error"/>
 		</DeprecatedMethod>
 		<UndefinedClass>
 			<errorLevel type="suppress">
-				<referencedClass name="OC" />
+				<referencedClass name="OC"/>
 			</errorLevel>
 		</UndefinedClass>
 	</issueHandlers>
-</psalm>
-
+<plugins><pluginClass class="Psalm\PhpUnitPlugin\Plugin"/></plugins></psalm>
