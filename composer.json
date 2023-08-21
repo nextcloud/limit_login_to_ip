@@ -1,7 +1,7 @@
 {
 	"name": "nextcloud/limit_login_to_ip",
 	"description": "Lint config for nextcloud/limit_login_to_ip",
-	"license": "MIT",
+	"license": "AGPL-3.0-only",
 	"config": {
 		"optimize-autoloader": true,
 		"classmap-authoritative": true,
