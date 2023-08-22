@@ -25,14 +25,12 @@ declare(strict_types=1);
 
 namespace OCA\LimitLoginToIp\AppInfo;
 
-use OCA\LimitLoginToIp\IsRequestAllowed;
 use OCA\LimitLoginToIp\LoginHookListener;
+use OCA\LimitLoginToIp\Middleware\CanSeeLoginPageMiddleware;
 use OCP\AppFramework\App;
 use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Bootstrap\IBootstrap;
 use OCP\AppFramework\Bootstrap\IRegistrationContext;
-use OCP\IRequest;
-use OCP\IURLGenerator;
 use OCP\User\Events\BeforeUserLoggedInEvent;
 
 /**
@@ -41,11 +39,12 @@ use OCP\User\Events\BeforeUserLoggedInEvent;
 class Application extends App implements IBootstrap {
 	public const APP_ID = 'limit_login_to_ip';
 
-	public function __construct() {
-		parent::__construct(self::APP_ID);
+	public function __construct(array $urlParams = []) {
+		parent::__construct(self::APP_ID, $urlParams);
 	}
 
 	public function register(IRegistrationContext $context): void {
+		$context->registerMiddleware(CanSeeLoginPageMiddleware::class, true);
 		$context->registerEventListener(
 			BeforeUserLoggedInEvent::class,
 			LoginHookListener::class,
@@ -54,23 +53,5 @@ class Application extends App implements IBootstrap {
 	}
 
 	public function boot(IBootContext $context): void {
-		$server = $context->getServerContainer();
-		/** @var IURLGenerator */
-		$urlGenerator = $server->get(IURLGenerator::class);
-		/** @var IRequest */
-		$request = $server->get(IRequest::class);
-
-		// Special behaviour for login page
-		// Block page before displaying form
-		$currentPath = parse_url($request->getRequestUri(), PHP_URL_PATH);
-		$loginPath = $urlGenerator->linkToRoute('core.login.showLoginForm');
-		/** @var IsRequestAllowed */
-		$isRequestAllowed = $server->get(IsRequestAllowed::class);
-		if ($currentPath === $loginPath && !$isRequestAllowed()) {
-			http_response_code(403);
-			$forbiddenLoginPath = $urlGenerator->linkToRouteAbsolute('limit_login_to_ip.LoginDenied.showErrorPage');
-			header('Location: '. $forbiddenLoginPath);
-			exit;
-		}
 	}
 }
