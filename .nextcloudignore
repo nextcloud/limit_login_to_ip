@@ -1,0 +1,17 @@
+.git
+.github
+.gitignore
+.nextcloudignore
+.php-cs-fixer.cache
+.php-cs-fixer.dist.php
+.phpactor.json
+.tx
+CHANGELOG.md
+composer.json
+composer.lock
+krankerl.toml
+Makefile
+psalm.xml
+tests
+vendor-bin
+
