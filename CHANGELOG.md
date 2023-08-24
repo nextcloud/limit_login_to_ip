@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+
+## 4.0.0-beta3 / 4.0.0
+### Fixes
+- Restore icon to delete IP range in settings UI
+
 ## 4.0.0-beta2
 ### Changes
 - Move to `Application.php` instead of deprecated `app.php`
