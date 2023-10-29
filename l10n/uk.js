@@ -2,10 +2,11 @@ OC.L10N.register(
     "limit_login_to_ip",
     {
     "Delete" : "Вилучити",
-    "Restrict login to IP addresses" : "Обмежити вхід для IP адрес",
-    "Allows administrators to restrict logins to their instance to specific IP ranges." : "Дозволяє адміністраторам обмежувати вхід для певних IP адрес або діапазонів.",
-    "Restrict login to IP ranges" : "Обмежити вхід для IP діапазонів",
-    "By default, %s permits logging-in from any IP address. To limit logins to specific IP ranges, you can specify those below." : "Стандартно %s дозволяє вхід з будь-якої IP адреси. Для обмеження входу з певних IP діапазонів ви можете використовувати наступне.",
+    "Restrict login to IP addresses" : "Обмеження входу з IP-адрес",
+    "Allows administrators to restrict logins to their instance to specific IP ranges." : "Дозволяє адміністраторам обмежувати вхід лише з певних IPдіапазонів IP-адрес.",
+    "This app allows administrators to restrict login to their\nNextcloud server to specific IP ranges. Note that existing sessions will be kept\nopen.\n\nThe allowed IP ranges can be administrated using the OCC command line interface\nor graphically using the admin settings. If you plan to use the OCC tool, the\nfollowing commands would be applicable.\n\nTo allow `127.0.0.0/24`:\n\n- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24`\n\nTo allow `127.0.0.0/24` and also `192.168.0.0/24`:\n\n- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24,192.168.0.0/24`" : "Цей застосунок дозволяє адміністраторам обмежити вхід до серверу хмари\nNextcloud із визначеного діапазону IP-адрес. Зверніть увагу, що нові обмеження\nбудуть застосовуватися лише для нових сесій.\n\nДозволений діапазон IP-адрес можна визначити за допомогою OCC у командному рядку\nабо у вебінтерфейсі у адміністративних налаштуваннях. Приклади налаштувань:\n\nЩоб дозволити вхід з `127.0.0.0/24`:\n\n- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24`\n\nЩоб дозволити вхід з `127.0.0.0/24`, а також з `192.168.0.0/24`:\n\n- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24,192.168.0.0/24`",
+    "Restrict login to IP ranges" : "Обмежити вхід для діапазонів IP-адрес",
+    "By default, %s permits logging-in from any IP address. To limit logins to specific IP ranges, you can specify those below." : "Типово %s дозволяє вхід з будь-якої IP адреси. Зазначте діапазони IP-адрес, лише з яких буде дозволено авторизацію.",
     "Add" : "Додати",
     "Not authorized" : "Не авторизовано"
 },
