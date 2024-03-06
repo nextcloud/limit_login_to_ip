@@ -36,6 +36,7 @@ final class IsRequestAllowed {
 	}
 
 	public function __invoke(): bool {
+		/** @psalm-suppress DeprecatedMethod */
 		$allowedRanges = $this->config->getAppValue('limit_login_to_ip', 'whitelisted.ranges', '');
 		if ($allowedRanges === '') {
 			return true;
