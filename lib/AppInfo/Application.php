@@ -25,12 +25,18 @@ declare(strict_types=1);
 
 namespace OCA\LimitLoginToIp\AppInfo;
 
-use OCA\LimitLoginToIp\LoginHookListener;
+use OCA\LimitLoginToIp\Listeners\GetSetting;
+use OCA\LimitLoginToIp\Listeners\LoginHook;
+use OCA\LimitLoginToIp\Listeners\SetSetting;
+use OCA\LimitLoginToIp\Listeners\Settings;
 use OCA\LimitLoginToIp\Middleware\CanSeeLoginPageMiddleware;
 use OCP\AppFramework\App;
 use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Bootstrap\IBootstrap;
 use OCP\AppFramework\Bootstrap\IRegistrationContext;
+use OCP\Settings\Events\DeclarativeSettingsGetValueEvent;
+use OCP\Settings\Events\DeclarativeSettingsSetValueEvent;
+use OCP\Settings\Events\DeclarativeSettingsRegisterFormEvent;
 use OCP\User\Events\BeforeUserLoggedInEvent;
 
 /**
@@ -47,8 +53,22 @@ class Application extends App implements IBootstrap {
 		$context->registerMiddleware(CanSeeLoginPageMiddleware::class, true);
 		$context->registerEventListener(
 			BeforeUserLoggedInEvent::class,
-			LoginHookListener::class,
-			50
+			LoginHook::class,
+			50,
+		);
+
+		// Setting listeners
+		$context->registerEventListener(
+			DeclarativeSettingsRegisterFormEvent::class, 
+			Settings::class,
+		);
+		$context->registerEventListener(
+			DeclarativeSettingsGetValueEvent::class, 
+			GetSetting::class,
+		);
+		$context->registerEventListener(
+			DeclarativeSettingsSetValueEvent::class, 
+			SetSetting::class,
 		);
 	}
 

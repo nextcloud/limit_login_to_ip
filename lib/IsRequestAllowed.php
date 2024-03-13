@@ -25,27 +25,26 @@ declare(strict_types=1);
 
 namespace OCA\LimitLoginToIp;
 
-use OCP\IConfig;
+use OCA\LimitLoginToIp\AppInfo\Application;
+use OCP\IAppConfig;
 use OCP\IRequest;
 
 final class IsRequestAllowed {
 	public function __construct(
-		private IConfig $config,
+		private IAppConfig $appConfig,
 		private IRequest $request,
 	) {
 	}
 
 	public function __invoke(): bool {
-		/** @psalm-suppress DeprecatedMethod */
-		$allowedRanges = $this->config->getAppValue('limit_login_to_ip', 'whitelisted.ranges', '');
-		if ($allowedRanges === '') {
+		$allowedRanges = $this->appConfig->getValueArray(Application::APP_ID, 'allowed_ranges');
+		if ($allowedRanges === []) {
 			return true;
 		}
-		$allowedRanges = explode(',', $allowedRanges);
 
 		$userIp = $this->request->getRemoteAddress();
 		foreach($allowedRanges as $range) {
-			if ($this->matchCidr($userIp, $range)) {
+			if ($this->matchCidr($userIp, $range['ip'], $range['mask'])) {
 				return true;
 			}
 		}
@@ -66,15 +65,8 @@ final class IsRequestAllowed {
 	 * @copyright (IPv4) https://stackoverflow.com/questions/594112/matching-an-ip-to-a-cidr-mask-in-php-5/594134#594134
 	 * @copyright (IPv6) MW. https://stackoverflow.com/questions/7951061/matching-ipv6-address-to-a-cidr-subnet via
 	 */
-	private function matchCidr(string $ip, string $range): bool {
-		$range = explode('/', $range);
-		$subnet = $range[0];
-		$bits = (int) ($range[1] ?? 0);
-
+	private function matchCidr(string $ip, string $subnet, int $bits): bool {
 		if ($this->isIpv4($ip) && $this->isIpv4($subnet)) {
-			if ($bits === 0) {
-				$bits = 32;
-			}
 			$mask = -1 << (32 - $bits);
 
 			$ip = ip2long($ip);

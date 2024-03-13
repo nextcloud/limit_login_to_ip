@@ -21,24 +21,33 @@ declare(strict_types=1);
  *
  */
 
-namespace OCA\LimitLoginToIp\Settings;
+namespace OCA\LimitLoginToIp\Listeners;
 
-use OCP\AppFramework\Http\TemplateResponse;
-use OCP\Settings\ISettings;
+use OCP\EventDispatcher\Event;
+use OCP\EventDispatcher\IEventListener;
+use OCP\User\Events\BeforeUserLoggedInEvent;
+use Psr\Log\LoggerInterface;
 
 /**
- * @psalm-api
+ * @template-implements IEventListener<Event>
  */
-class LimitSettings implements ISettings {
-	public function getForm(): TemplateResponse {
-		return new TemplateResponse('limit_login_to_ip', 'admin-settings');
+class LoginHook implements IEventListener {
+	public function __construct(
+		private IsRequestAllowed $isRequestAllowed,
+		private LoggerInterface $logger,
+	) {
 	}
 
-	public function getSection(): string {
-		return 'security';
-	}
+	public function handle(Event $event): void {
+		if (!$event instanceof BeforeUserLoggedInEvent || ($this->isRequestAllowed)()) {
+			return;
+		}
 
-	public function getPriority(): int {
-		return 50;
+		$this->logger->info('Login from {username} was blocked', [
+			'username' => $event->getUsername(),
+			'backend' => $event->getBackend(),
+		]);
+		http_response_code(403);
+		exit;
 	}
 }

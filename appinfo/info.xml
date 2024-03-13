@@ -37,7 +37,4 @@ To allow `127.0.0.0/24` and also `192.168.0.0/24`:
 	<dependencies>
 		<nextcloud min-version="29" max-version="29" />
 	</dependencies>
-	<settings>
-		<admin>OCA\LimitLoginToIp\Settings\LimitSettings</admin>
-	</settings>
 </info>
