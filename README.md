@@ -1,4 +1,10 @@
+<!--
+  - SPDX-FileCopyrightText: 2017 Nextcloud GmbH and Nextcloud contributors
+  - SPDX-License-Identifier: AGPL-3.0-or-later
+-->
 # Limit login to IP ranges
+
+[![REUSE status](https://api.reuse.software/badge/github.com/nextcloud/limit_login_to_ip)](https://api.reuse.software/info/github.com/nextcloud/limit_login_to_ip)
 
 This app modifies the login logic to only allow logins from specified ip address ranges.
 
