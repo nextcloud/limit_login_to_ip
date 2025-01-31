@@ -30,8 +30,8 @@ class CanSeeLoginPageMiddleware extends Middleware {
 	];
 
 	public function __construct(
-		private IsRequestAllowed $isRequestAllowed,
-		private IURLGenerator $urlGenerator,
+		private readonly IsRequestAllowed $isRequestAllowed,
+		private readonly IURLGenerator $urlGenerator,
 	) {
 	}
 
@@ -53,7 +53,7 @@ class CanSeeLoginPageMiddleware extends Middleware {
 		}
 
 		$forbiddenLoginPath = $this->urlGenerator->linkToRouteAbsolute('limit_login_to_ip.LoginDenied.showErrorPage');
-		header('Location: '. $forbiddenLoginPath);
+		header('Location: ' . $forbiddenLoginPath);
 		exit;
 	}
 }

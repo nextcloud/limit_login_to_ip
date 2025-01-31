@@ -18,17 +18,16 @@ use PHPUnit\Framework\TestCase;
 class IsRequestAllowedTest extends TestCase {
 	/** @var IConfig|MockObject */
 	private $config;
+
 	/** @var IRequest|MockObject */
 	private $request;
-	private $lastHttpCode;
+
 	private IsRequestAllowed $isRequestAllowed;
 
 	protected function setUp(): void {
-		parent::setUp();
-
 		$this->config = $this->createMock(IConfig::class);
 		$this->request = $this->createMock(IRequest::class);
-		
+
 		$this->isRequestAllowed = new IsRequestAllowed(
 			$this->config,
 			$this->request,

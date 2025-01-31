@@ -18,8 +18,8 @@ use Psr\Log\LoggerInterface;
  */
 class LoginHookListener implements IEventListener {
 	public function __construct(
-		private IsRequestAllowed $isRequestAllowed,
-		private LoggerInterface $logger,
+		private readonly IsRequestAllowed $isRequestAllowed,
+		private readonly LoggerInterface $logger,
 	) {
 	}
 
