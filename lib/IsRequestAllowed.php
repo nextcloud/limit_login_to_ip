@@ -9,18 +9,18 @@ declare(strict_types=1);
 
 namespace OCA\LimitLoginToIp;
 
-use OCP\IConfig;
+use OCP\IAppConfig;
 use OCP\IRequest;
 
 final class IsRequestAllowed {
 	public function __construct(
-		private readonly IConfig $config,
+		private readonly IAppConfig $appConfig,
 		private readonly IRequest $request,
 	) {
 	}
 
 	public function __invoke(): bool {
-		$allowedRanges = $this->config->getAppValue('limit_login_to_ip', 'whitelisted.ranges', '');
+		$allowedRanges = $this->appConfig->getValueString('limit_login_to_ip', 'whitelisted.ranges', '');
 		if ($allowedRanges === '') {
 			return true;
 		}
