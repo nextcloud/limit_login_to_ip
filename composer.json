@@ -30,6 +30,7 @@
 		"psalm": "psalm",
 		"psalm:fix": "bin/psalm --alter --issues=InvalidReturnType,InvalidNullableReturnType,MismatchingDocblockParamType,MismatchingDocblockReturnType,MissingParamType,InvalidFalsableReturnType",
 		"psalm:update-baseline": "psalm --update-baseline",
+		"rector": "rector && composer run cs:fix",
 		"post-install-cmd": [
 			"@composer bin all install --ansi"
 		],
