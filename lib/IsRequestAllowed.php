@@ -20,7 +20,6 @@ final class IsRequestAllowed {
 	}
 
 	public function __invoke(): bool {
-		/** @psalm-suppress DeprecatedMethod */
 		$allowedRanges = $this->config->getAppValue('limit_login_to_ip', 'whitelisted.ranges', '');
 		if ($allowedRanges === '') {
 			return true;
@@ -61,9 +60,10 @@ final class IsRequestAllowed {
 			}
 			$mask = -1 << (32 - $bits);
 
-			$ip = ip2long($ip);
-			$subnet = ip2long($subnet);
+			$ip = (int)ip2long($ip);
+			$subnet = (int)ip2long($subnet);
 			$subnet &= $mask;
+
 			return ($ip & $mask) === $subnet;
 		}
 

@@ -24,7 +24,7 @@ To allow `127.0.0.0/24` and also `192.168.0.0/24`:
 
 - `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24,192.168.0.0/24`
 ]]></description>
-	<version>4.1.1</version>
+	<version>4.2.0</version>
 	<licence>agpl</licence>
 	<author>Lukas Reschke</author>
 	<author>Benjamin Gaussorgues</author>
@@ -39,7 +39,7 @@ To allow `127.0.0.0/24` and also `192.168.0.0/24`:
 	<screenshot>https://raw.githubusercontent.com/nextcloud/limit_login_to_ip/master/screenshots/not-authorized.png</screenshot>
 	<screenshot>https://raw.githubusercontent.com/nextcloud/limit_login_to_ip/master/screenshots/admin-settings.png</screenshot>
 	<dependencies>
-		<nextcloud min-version="28" max-version="30" />
+		<nextcloud min-version="30" max-version="32" />
 	</dependencies>
 	<settings>
 		<admin>OCA\LimitLoginToIp\Settings\LimitSettings</admin>

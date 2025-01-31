@@ -5,6 +5,7 @@
 -->
 <psalm
 	errorLevel="1"
+	phpVersion="8.1"
 	resolveFromConfigFile="true"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="https://getpsalm.org/schema/config"
@@ -23,14 +24,7 @@
 	<extraFiles>
 		<directory name="vendor"/>
 	</extraFiles>
-	<issueHandlers>
-		<DeprecatedMethod>
-			<errorLevel type="error"/>
-		</DeprecatedMethod>
-		<UndefinedClass>
-			<errorLevel type="suppress">
-				<referencedClass name="OC"/>
-			</errorLevel>
-		</UndefinedClass>
-	</issueHandlers>
-<plugins><pluginClass class="Psalm\PhpUnitPlugin\Plugin"/></plugins></psalm>
+	<plugins>
+		<pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>
+	</plugins>
+</psalm>
