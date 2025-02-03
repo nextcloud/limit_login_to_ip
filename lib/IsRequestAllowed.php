@@ -9,26 +9,26 @@ declare(strict_types=1);
 
 namespace OCA\LimitLoginToIp;
 
-use OCP\IConfig;
+use OCP\IAppConfig;
 use OCP\IRequest;
 
 final class IsRequestAllowed {
 	public function __construct(
-		private IConfig $config,
-		private IRequest $request,
+		private readonly IAppConfig $appConfig,
+		private readonly IRequest $request,
 	) {
 	}
 
 	public function __invoke(): bool {
-		/** @psalm-suppress DeprecatedMethod */
-		$allowedRanges = $this->config->getAppValue('limit_login_to_ip', 'whitelisted.ranges', '');
+		$allowedRanges = $this->appConfig->getValueString('limit_login_to_ip', 'whitelisted.ranges', '');
 		if ($allowedRanges === '') {
 			return true;
 		}
+
 		$allowedRanges = explode(',', $allowedRanges);
 
 		$userIp = $this->request->getRemoteAddress();
-		foreach($allowedRanges as $range) {
+		foreach ($allowedRanges as $range) {
 			if ($this->matchCidr($userIp, $range)) {
 				return true;
 			}
@@ -38,11 +38,11 @@ final class IsRequestAllowed {
 	}
 
 	private function isIpv4(string $ip): bool {
-		return (bool) filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
+		return (bool)filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
 	}
 
 	private function isIpv6(string $ip): bool {
-		return (bool) filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6);
+		return (bool)filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6);
 	}
 
 	/**
@@ -53,17 +53,19 @@ final class IsRequestAllowed {
 	private function matchCidr(string $ip, string $range): bool {
 		$range = explode('/', $range);
 		$subnet = $range[0];
-		$bits = (int) ($range[1] ?? 0);
+		$bits = (int)($range[1] ?? 0);
 
 		if ($this->isIpv4($ip) && $this->isIpv4($subnet)) {
 			if ($bits === 0) {
 				$bits = 32;
 			}
+
 			$mask = -1 << (32 - $bits);
 
-			$ip = ip2long($ip);
-			$subnet = ip2long($subnet);
+			$ip = (int)ip2long($ip);
+			$subnet = (int)ip2long($subnet);
 			$subnet &= $mask;
+
 			return ($ip & $mask) === $subnet;
 		}
 
@@ -74,28 +76,29 @@ final class IsRequestAllowed {
 				$bits = 128;
 			}
 
-			$binMask = str_repeat("f", (int) ($bits / 4));
+			$binMask = str_repeat('f', (int)($bits / 4));
 			switch ($bits % 4) {
 				case 0:
 					break;
 				case 1:
-					$binMask .= "8";
+					$binMask .= '8';
 					break;
 				case 2:
-					$binMask .= "c";
+					$binMask .= 'c';
 					break;
 				case 3:
-					$binMask .= "e";
+					$binMask .= 'e';
 					break;
 			}
 
 			$binMask = str_pad($binMask, 32, '0');
-			$binMask = pack("H*", $binMask);
+			$binMask = pack('H*', $binMask);
 
 			if (($ip & $binMask) === $subnet) {
 				return true;
 			}
 		}
+
 		return false;
 	}
 }

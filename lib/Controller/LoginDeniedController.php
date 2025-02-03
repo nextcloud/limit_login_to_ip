@@ -10,16 +10,16 @@ namespace OCA\LimitLoginToIp\Controller;
 
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
+use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
+use OCP\AppFramework\Http\Attribute\PublicPage;
 use OCP\AppFramework\Http\TemplateResponse;
 
 /**
  * @psalm-api
  */
 class LoginDeniedController extends Controller {
-	/**
-	 * @PublicPage
-	 * @NoCSRFRequired
-	 */
+	#[PublicPage]
+	#[NoCSRFRequired]
 	public function showErrorPage(): TemplateResponse {
 		$response = new TemplateResponse(
 			$this->appName,

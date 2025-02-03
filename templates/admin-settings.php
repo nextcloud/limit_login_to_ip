@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-/** @var $l \OCP\IL10N */
+/** @var \OCP\IL10N $l */
 \OCP\Util::addStyle('limit_login_to_ip', 'settings');
 \OCP\Util::addScript('limit_login_to_ip', 'settings');
 $defaults = new OCP\Defaults();

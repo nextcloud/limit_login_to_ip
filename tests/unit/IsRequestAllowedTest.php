@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace OCA\LimitLoginToIp\Tests\Unit;
 
 use OCA\LimitLoginToIp\IsRequestAllowed;
-use OCP\IConfig;
+use OCP\IAppConfig;
 use OCP\IRequest;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -18,17 +18,16 @@ use PHPUnit\Framework\TestCase;
 class IsRequestAllowedTest extends TestCase {
 	/** @var IConfig|MockObject */
 	private $config;
+
 	/** @var IRequest|MockObject */
 	private $request;
-	private $lastHttpCode;
+
 	private IsRequestAllowed $isRequestAllowed;
 
 	protected function setUp(): void {
-		parent::setUp();
-
-		$this->config = $this->createMock(IConfig::class);
+		$this->config = $this->createMock(IAppConfig::class);
 		$this->request = $this->createMock(IRequest::class);
-		
+
 		$this->isRequestAllowed = new IsRequestAllowed(
 			$this->config,
 			$this->request,
@@ -40,7 +39,7 @@ class IsRequestAllowedTest extends TestCase {
 	 */
 	public function testMatchRange(string $ipAddress, ?string $subnet, bool $shouldSucceed): void {
 		$this->config->expects($this->once())
-			->method('getAppValue')
+			->method('getValueString')
 			->with('limit_login_to_ip', 'whitelisted.ranges', '')
 			->willReturn($subnet);
 		if ($subnet !== '') {
@@ -73,5 +72,4 @@ class IsRequestAllowedTest extends TestCase {
 			['85d2:057d:e774:c8f7:5071:0fe0:6deb:62be', '85d2:057d:e774:c8f7:5071:0fe0:6deb:62bd', false],
 		];
 	}
-
 }
