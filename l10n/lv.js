@@ -1,7 +1,7 @@
 OC.L10N.register(
     "limit_login_to_ip",
     {
-    "Delete" : "Dzēst",
+    "Delete" : "Izdzēst",
     "Add" : "Pievienot",
     "Not authorized" : "Nav autorizēts"
 },

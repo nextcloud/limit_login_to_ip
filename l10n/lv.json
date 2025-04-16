@@ -1,5 +1,5 @@
 { "translations": {
-    "Delete" : "Dzēst",
+    "Delete" : "Izdzēst",
     "Add" : "Pievienot",
     "Not authorized" : "Nav autorizēts"
 },"pluralForm" :"nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);"
