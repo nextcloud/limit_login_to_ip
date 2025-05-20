@@ -17,5 +17,3 @@ require_once __DIR__ . '/../../../tests/autoload.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 
 Server::get(IAppManager::class)->loadApp('limit_login_to_ip');
-
-OC_Hook::clear();
