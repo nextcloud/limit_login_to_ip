@@ -2,6 +2,12 @@ OC.L10N.register(
     "limit_login_to_ip",
     {
     "Delete" : "Futa",
-    "Add" : "Ongeza"
+    "Restrict login to IP addresses" : "Zuia uingiaji kwenye anwani za IP",
+    "Allows administrators to restrict logins to their instance to specific IP ranges." : "Huruhusu wasimamizi kuzuia kuingia kwa mfano wao kwa safu mahususi za IP.",
+    "This app allows administrators to restrict login to their\nNextcloud server to specific IP ranges. Note that existing sessions will be kept\nopen.\n\nThe allowed IP ranges can be administrated using the OCC command line interface\nor graphically using the admin settings. If you plan to use the OCC tool, the\nfollowing commands would be applicable.\n\nTo allow `127.0.0.0/24`:\n\n- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24`\n\nTo allow `127.0.0.0/24` and also `192.168.0.0/24`:\n\n- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24,192.168.0.0/24`" : "Programu hii inaruhusu wasimamizi kuzuia kuingia kwa wao\nSeva ya Nextcloud kwa safu maalum za IP. Kumbuka kuwa vipindi vilivyopo vitahifadhiwa\nwazi.\n\nMasafa ya IP yanayoruhusiwa yanaweza kusimamiwa kwa kutumia kiolesura cha mstari wa amri cha OCC\nau kwa picha kwa kutumia mipangilio ya msimamizi. Ikiwa unapanga kutumia zana ya OCC, faili ya\namri zifuatazo zitatumika.\n\nIli kuruhusu `127.0.0.0/24`:\n\n- `occ config:app:weka limit_login_to_ip whitelisted.ranges --thamani 127.0.0.0/24`\n\nIli kuruhusu `127.0.0.0/24` na pia `192.168.0.0/24`:\n\n- `occ config:app:weka limit_login_to_ip whitelisted.ranges --thamani 127.0.0.0/24,192.168.0.0/24`",
+    "Restrict login to IP ranges" : "Zuia uingiaji kwenye safu za IP",
+    "By default, %s permits logging-in from any IP address. To limit logins to specific IP ranges, you can specify those below." : "Kwa chaguo-msingi, %s inaruhusu kuingia kutoka kwa anwani yoyote ya IP. Ili kuweka kikomo cha kuingia kwa safu mahususi za IP, unaweza kubainisha zile zilizo hapa chini.",
+    "Add" : "Ongeza",
+    "Not authorized" : "Haijathibitishwa"
 },
 "nplurals=2; plural=(n != 1);");
