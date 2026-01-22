@@ -1,48 +1,49 @@
 {
-	"name": "nextcloud/limit_login_to_ip",
-	"description": "Lint config for nextcloud/limit_login_to_ip",
-	"license": "AGPL-3.0-only",
-	"config": {
-		"optimize-autoloader": true,
-		"classmap-authoritative": true,
-		"sort-packages": true,
-		"allow-plugins": {
-			"bamarni/composer-bin-plugin": true
-		},
-		"platform": {
-			"php": "8.1"
-		}
-	},
-	"require": {
-		"php": "^8.1",
-		"bamarni/composer-bin-plugin": "^1.8.2"
-	},
-	"extra": {
-		"bamarni-bin": {
-			"bin-links": true,
-			"forward-command": false
-		}
-	},
-	"scripts": {
-		"cs:check": "php-cs-fixer fix --dry-run --diff",
-		"cs:fix": "php-cs-fixer fix",
-		"lint": "find . -name \\*.php -not -path './vendor*/*' -print0 | xargs -0 -n1 -P $(nproc) php -l",
-		"psalm": "psalm",
-		"psalm:fix": "bin/psalm --alter --issues=InvalidReturnType,InvalidNullableReturnType,MismatchingDocblockParamType,MismatchingDocblockReturnType,MissingParamType,InvalidFalsableReturnType",
-		"psalm:update-baseline": "psalm --update-baseline",
-		"rector": "rector && composer run cs:fix",
-		"post-install-cmd": [
-			"@composer bin all install --ansi"
-		],
-		"post-update-cmd": [
-			"@composer bin all update --ansi"
-		],
-		"test:unit": "phpunit -c tests/phpunit-unit.xml --fail-on-warning",
-		"test:unit:dev": "phpunit -c tests/phpunit-unit.xml --no-coverage --order-by=defects --stop-on-defect --fail-on-warning --stop-on-error --stop-on-failure",
-		"test:integration": "cd tests/integration && ./run.sh"
-	},
-	"require-dev": {
-		"nextcloud/ocp": "dev-master",
-		"roave/security-advisories": "dev-master"
-	}
+  "name": "nextcloud/limit_login_to_ip",
+  "description": "Lint config for nextcloud/limit_login_to_ip",
+  "license": "AGPL-3.0-only",
+  "config": {
+    "optimize-autoloader": true,
+    "classmap-authoritative": true,
+    "sort-packages": true,
+    "allow-plugins": {
+      "bamarni/composer-bin-plugin": true
+    },
+    "platform": {
+      "php": "8.1"
+    }
+  },
+  "type": "project",
+  "require": {
+    "php": "^8.1",
+    "bamarni/composer-bin-plugin": "^1.8.3"
+  },
+  "extra": {
+    "bamarni-bin": {
+      "bin-links": true,
+      "forward-command": false
+    }
+  },
+  "scripts": {
+    "cs:check": "php-cs-fixer fix --dry-run --diff",
+    "cs:fix": "php-cs-fixer fix",
+    "lint": "find . -name \\*.php -not -path './vendor*/*' -print0 | xargs -0 -n1 -P $(nproc) php -l",
+    "psalm": "psalm",
+    "psalm:fix": "bin/psalm --alter --issues=InvalidReturnType,InvalidNullableReturnType,MismatchingDocblockParamType,MismatchingDocblockReturnType,MissingParamType,InvalidFalsableReturnType",
+    "psalm:update-baseline": "psalm --update-baseline",
+    "rector": "rector && composer run cs:fix",
+    "post-install-cmd": [
+      "@composer bin all install --ansi"
+    ],
+    "post-update-cmd": [
+      "@composer bin all update --ansi"
+    ],
+    "test:unit": "phpunit -c tests/phpunit-unit.xml --fail-on-warning",
+    "test:unit:dev": "phpunit -c tests/phpunit-unit.xml --no-coverage --order-by=defects --stop-on-defect --fail-on-warning --stop-on-error --stop-on-failure",
+    "test:integration": "cd tests/integration && ./run.sh"
+  },
+  "require-dev": {
+    "nextcloud/ocp": "dev-stable31",
+    "roave/security-advisories": "dev-master"
+  }
 }
