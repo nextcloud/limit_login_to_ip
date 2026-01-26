@@ -1,6 +1,11 @@
 { "translations": {
     "Delete" : "Hapus",
-    "Add" : "Masukkan",
-    "Not authorized" : "Tidak diizinkan"
+    "Restrict login to IP addresses" : "Batasi login ke alamat IP",
+    "Allows administrators to restrict logins to their instance to specific IP ranges." : "Memungkinkan administrator membatasi login ke instans mereka pada rentang IP tertentu.",
+    "This app allows administrators to restrict login to their\nNextcloud server to specific IP ranges. Note that existing sessions will be kept\nopen.\n\nThe allowed IP ranges can be administrated using the OCC command line interface\nor graphically using the admin settings. If you plan to use the OCC tool, the\nfollowing commands would be applicable.\n\nTo allow `127.0.0.0/24`:\n\n- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24`\n\nTo allow `127.0.0.0/24` and also `192.168.0.0/24`:\n\n- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24,192.168.0.0/24`" : "Aplikasi ini memungkinkan administrator membatasi login ke server\nNextcloud mereka pada rentang IP tertentu. Perhatikan bahwa sesi yang sudah ada akan tetap\nterbuka.\n\nRentang IP yang diizinkan dapat dikelola menggunakan antarmuka baris perintah OCC\natau secara grafis melalui pengaturan admin. Jika Anda berencana menggunakan alat OCC,\nperintah berikut akan berlaku.\n\nUntuk mengizinkan `127.0.0.0/24`:\n\n- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24`\n\nUntuk mengizinkan `127.0.0.0/24` dan juga `192.168.0.0/24`:\n\n- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24,192.168.0.0/24`",
+    "Restrict login to IP ranges" : "Batasi login ke rentang IP",
+    "By default, %s permits logging-in from any IP address. To limit logins to specific IP ranges, you can specify those below." : "Secara default, %s mengizinkan login dari alamat IP apa pun. Untuk membatasi login pada rentang IP tertentu, Anda dapat menentukannya di bawah ini.",
+    "Add" : "Tambah",
+    "Not authorized" : "Tidak berwenang"
 },"pluralForm" :"nplurals=1; plural=0;"
 }
