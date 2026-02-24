@@ -1,7 +1,10 @@
 { "translations": {
     "Delete" : "Устгах",
     "Restrict login to IP addresses" : "Нэвтрэлтийг IP хаягаар хязгаарлах",
+    "Allows administrators to restrict logins to their instance to specific IP ranges." : "Администраторуудад жишээнийхээ нэвтрэлтийг тодорхой IP мужуудаар хязгаарлах боломж олгодог.",
+    "This app allows administrators to restrict login to their\nNextcloud server to specific IP ranges. Note that existing sessions will be kept\nopen.\n\nThe allowed IP ranges can be administrated using the OCC command line interface\nor graphically using the admin settings. If you plan to use the OCC tool, the\nfollowing commands would be applicable.\n\nTo allow `127.0.0.0/24`:\n\n- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24`\n\nTo allow `127.0.0.0/24` and also `192.168.0.0/24`:\n\n- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24,192.168.0.0/24`" : "Энэ апп нь администраторуудад Nextcloud серверт нэвтрэлтийг\nтодорхой IP мужуудаар хязгаарлах боломж олгодог. Одоо байгаа сессүүд нээлттэй хэвээр байх болно.\n\nЗөвшөөрөгдсөн IP мужуудыг OCC командын мөрийн интерфейс ашиглан\nэсвэл администраторын тохиргоог ашиглан график байдлаар удирдаж болно. OCC хэрэгслийг ашиглахаар төлөвлөж байвал\nдараах командууд хамаарна.\n\n`127.0.0.0/24` зөвшөөрөхийн тулд:\n\n- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24`\n\n`127.0.0.0/24` болон `192.168.0.0/24` зөвшөөрөхийн тулд:\n\n- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24,192.168.0.0/24`",
     "Restrict login to IP ranges" : "Нэвтрэлтийг IP хүрээгээр хязгаарлах",
+    "By default, %s permits logging-in from any IP address. To limit logins to specific IP ranges, you can specify those below." : "Үндсэн тохиргоогоор %s аливаа IP хаягаас нэвтрэхийг зөвшөөрдөг. Нэвтрэлтийг тодорхой IP мужуудаар хязгаарлахын тулд доор зааж өгч болно.",
     "Add" : "нэмэх",
     "Not authorized" : "Зөвшөөрөлгүй"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
