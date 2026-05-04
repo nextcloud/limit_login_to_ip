@@ -16,7 +16,7 @@
   "type": "project",
   "require": {
     "php": "^8.1",
-    "bamarni/composer-bin-plugin": "^1.8.3"
+    "bamarni/composer-bin-plugin": "^1.9.1"
   },
   "extra": {
     "bamarni-bin": {
