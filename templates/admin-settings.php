@@ -5,10 +5,13 @@
  */
 
 /** @var \OCP\IL10N $l */
-\OCP\Util::addStyle('limit_login_to_ip', 'settings');
-\OCP\Util::addScript('limit_login_to_ip', 'settings');
+\OCP\Util::addScript('limit_login_to_ip', 'limit_login_to_ip-settings');
 $defaults = new OCP\Defaults();
 ?>
+
+<div id="limit-login-to-ip-settings">
+	<limit-settings></limit-settings>
+</div>
 
 <form id="limit-login-to-ip" class="section">
 	<h2><?php p($l->t('Restrict login to IP ranges')); ?></h2>

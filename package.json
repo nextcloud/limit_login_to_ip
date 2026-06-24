@@ -1,0 +1,46 @@
+{
+	"name": "limit_login_to_ip",
+	"description": "Limit Login to IP for nextcloud",
+	"version": "4.3.0",
+	"author": "Nextcloud GmbH and Nextcloud contributors",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/nextcloud/limit_login_to_ip.git"
+	},
+	"bugs": {
+		"url": "https://github.com/nextcloud/limit_login_to_ip/issues"
+	},
+	"homepage": "https://github.com/nextcloud/limit_login_to_ip#readme",
+	"license": "AGPL-3.0-or-later",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"build": "vite --mode production build",
+		"dev": "vite --mode development build",
+		"watch": "vite --mode development build --watch",
+		"lint": "eslint --ext .ts,.vue src",
+		"lint:fix": "eslint --ext .ts,.vue src --fix",
+		"stylelint": "stylelint src/**/*.vue src/**/*.vue",
+		"stylelint:fix": "stylelint src/**/*.vue --fix"
+	},
+	"dependencies": {
+		"@nextcloud/initial-state": "^3.0.0",
+		"@nextcloud/l10n": "^3.4.1",
+		"@nextcloud/vue": "^9.8.2",
+		"vue": "^3.5.38"
+	},
+	"engines": {
+		"node": "^24.0.0",
+		"npm": "^11.3.0"
+	},
+	"devDependencies": {
+		"@nextcloud/browserslist-config": "^3.1.2",
+		"@nextcloud/eslint-config": "^9.0.0-rc.9",
+		"@nextcloud/stylelint-config": "^3.2.2",
+		"@nextcloud/vite-config": "^2.5.2",
+		"@vue/tsconfig": "^0.9.1",
+		"typescript": "^5.9.3",
+		"vite": "^7.3.5",
+		"eslint": "^9.39.1"
+	}
+}
