@@ -48,7 +48,11 @@ class SettingsController extends OCSController {
 	public function updateIpRanges(array $allowedRanges): DataResponse {
 		$allowedRanges = array_map('trim', $allowedRanges);
 
-		if (!$this->validateIpRanges($allowedRanges)) {
+		// only validate additions to prevent broken existing ranges from being rejected
+		$stored = array_map('trim', explode(',', $this->appConfig->getValueString(Application::APP_ID, Application::CONFIG_KEY_RANGES, '')));
+		$newEntries = array_values(array_diff($allowedRanges, $stored));
+
+		if (!$this->validateIpRanges($newEntries)) {
 			return new DataResponse([
 				'message' => $this->l->t('Invalid IP range(s) provided. Please ensure all ranges are in valid CIDR notation.'),
 			], Http::STATUS_BAD_REQUEST);

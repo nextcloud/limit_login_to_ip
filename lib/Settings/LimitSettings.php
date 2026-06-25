@@ -33,7 +33,7 @@ class LimitSettings implements IDelegatedSettings {
 		$allowedRangesArray = array_filter(explode(',', $allowedRanges));
 
 		$this->initialState->provideInitialState('allowedRanges', $allowedRangesArray);
-		$this->initialState->provideInitialState('entity', $entity);
+		$this->initialState->provideInitialState('instanceName', $entity);
 		return new TemplateResponse(Application::APP_ID, 'admin-settings');
 	}
 

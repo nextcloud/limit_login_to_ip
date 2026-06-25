@@ -6,7 +6,4 @@
 import { createApp } from 'vue'
 import LimitSettings from './LimitSettings.vue'
 
-const app = createApp(LimitSettings)
-app.mount('#limit-login-to-ip-settings')
-
-export default app
+createApp(LimitSettings).mount('#limit-login-to-ip-settings')
