@@ -6,6 +6,7 @@
 
 /** @var \OCP\IL10N $l */
 \OCP\Util::addScript('limit_login_to_ip', 'limit_login_to_ip-settings');
+\OCP\Util::addStyle('limit_login_to_ip', 'limit_login_to_ip-settings');
 $defaults = new OCP\Defaults();
 ?>
 

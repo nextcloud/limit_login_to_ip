@@ -6,4 +6,7 @@ import { createAppConfig } from '@nextcloud/vite-config'
 
 export default createAppConfig({
 	settings: 'src/settings.ts',
+}, {
+	appName: 'limit_login_to_ip',
+	emptyOutputDirectory: { additionalDirectories: ['css'] },
 })
