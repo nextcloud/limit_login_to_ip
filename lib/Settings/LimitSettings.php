@@ -13,12 +13,12 @@ use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Services\IInitialState;
 use OCP\Defaults;
 use OCP\IAppConfig;
-use OCP\Settings\ISettings;
+use OCP\Settings\IDelegatedSettings;
 
 /**
  * @psalm-api
  */
-class LimitSettings implements ISettings {
+class LimitSettings implements IDelegatedSettings {
 
 	public function __construct(
 		private readonly IAppConfig $appConfig,
@@ -29,7 +29,7 @@ class LimitSettings implements ISettings {
 
 	public function getForm(): TemplateResponse {
 		$entity = $this->defaults->getEntity();
-		$allowedRanges = $this->appConfig->getValueString(Application::APP_ID, 'whitelisted.ranges', '');
+		$allowedRanges = $this->appConfig->getValueString(Application::APP_ID, Application::CONFIG_KEY_RANGES, '');
 		$allowedRangesArray = array_filter(explode(',', $allowedRanges));
 
 		$this->initialState->provideInitialState('allowedRanges', $allowedRangesArray);
@@ -43,5 +43,12 @@ class LimitSettings implements ISettings {
 
 	public function getPriority(): int {
 		return 50;
+	}
+
+	public function getName(): ?string {
+		return null;
+	}
+	public function getAuthorizedAppConfig(): array {
+		return [];
 	}
 }
