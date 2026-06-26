@@ -4,10 +4,9 @@
 -->
 
 <script setup lang="ts">
-
 import { mdiTrashCanOutline } from '@mdi/js'
 import axios, { isAxiosError } from '@nextcloud/axios'
-import { showError, showSuccess } from '@nextcloud/dialogs'
+import { showError } from '@nextcloud/dialogs'
 import { loadState } from '@nextcloud/initial-state'
 import { t } from '@nextcloud/l10n'
 import { confirmPassword } from '@nextcloud/password-confirmation'
@@ -16,6 +15,7 @@ import { ref, useTemplateRef, watch } from 'vue'
 import NcButton from '@nextcloud/vue/components/NcButton'
 import NcIconSvgWrapper from '@nextcloud/vue/components/NcIconSvgWrapper'
 import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
+import NcNoteCard from '@nextcloud/vue/components/NcNoteCard'
 import NcSettingsSection from '@nextcloud/vue/components/NcSettingsSection'
 import NcTextField from '@nextcloud/vue/components/NcTextField'
 import { logger } from './logger.ts'
@@ -181,8 +181,10 @@ async function deleteRange(index: number): Promise<void> {
 					<NcButton
 						variant="error"
 						:title="t('limit_login_to_ip', 'Delete')"
-						:aria-label="t('limit_login_to_ip', 'Delete {range}', { range })"
-						:aria-busy="pendingAction === index"
+						:aria-label="pendingAction === index
+							? t('limit_login_to_ip', 'Deleting {range}', { range })
+							: t('limit_login_to_ip', 'Delete {range}', { range })"
+						:aria-disabled="pendingAction === index"
 						@click="deleteRange(index)">
 						<template #icon>
 							<NcLoadingIcon v-if="pendingAction === index" />
@@ -198,7 +200,7 @@ async function deleteRange(index: number): Promise<void> {
 				<NcTextField
 					ref="ipField"
 					v-model="newRangeIP"
-					:labelOutside="true"
+					labelOutside
 					:aria-label="t('limit_login_to_ip', 'IP range')"
 					:aria-describedby="ipError ? 'limit-settings-ip-error' : undefined"
 					:placeholder="t('limit_login_to_ip', '1.2.3.4')"
@@ -210,7 +212,7 @@ async function deleteRange(index: number): Promise<void> {
 					ref="maskField"
 					v-model="newRangeMask"
 					type="number"
-					:labelOutside="true"
+					labelOutside
 					:aria-label="t('limit_login_to_ip', 'Subnet mask')"
 					:aria-describedby="maskError ? 'limit-settings-mask-error' : undefined"
 					:placeholder="t('limit_login_to_ip', '24')"
@@ -219,25 +221,27 @@ async function deleteRange(index: number): Promise<void> {
 			<NcButton
 				class="limit-settings__add-submit"
 				variant="secondary"
-				:text="t('limit_login_to_ip', 'Add')"
-				:aria-busy="pendingAction === 'add'"
+				:aria-disabled="pendingAction === 'add'"
 				@click="addRange">
 				<template v-if="pendingAction === 'add'" #icon>
 					<NcLoadingIcon />
 				</template>
+				{{ t('limit_login_to_ip', 'Add') }}
+				<span v-if="pendingAction === 'add'" class="hidden-visually">
+					{{ t('limit_login_to_ip', '(loading)') }}
+				</span>
 			</NcButton>
 		</div>
-		<div
+		<NcNoteCard
 			v-if="ipError || maskError"
-			class="limit-settings__error"
-			role="alert">
+			type="error">
 			<p v-if="ipError" id="limit-settings-ip-error">
 				{{ ipError }}
 			</p>
 			<p v-if="maskError" id="limit-settings-mask-error">
 				{{ maskError }}
 			</p>
-		</div>
+		</NcNoteCard>
 	</NcSettingsSection>
 </template>
 
@@ -290,14 +294,5 @@ async function deleteRange(index: number): Promise<void> {
 
 .limit-settings__add-submit {
 	flex: 0 0 auto;
-}
-
-.limit-settings__error {
-	margin-block-start: calc(2 * var(--default-grid-baseline));
-	color: var(--color-error-text, var(--color-error));
-}
-
-.limit-settings__error p {
-	margin: 0;
 }
 </style>

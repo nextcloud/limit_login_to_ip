@@ -87,7 +87,8 @@ class SettingsController extends OCSController {
 
 		if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
 			return $mask >= 0 && $mask <= 32;
-		} elseif (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
+		}
+		if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
 			return $mask >= 0 && $mask <= 128;
 		}
 
