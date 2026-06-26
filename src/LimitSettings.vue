@@ -147,7 +147,6 @@ async function addRange(): Promise<void> {
 	const range = `${newRangeIP.value.trim()}/${String(newRangeMask.value).trim()}`
 	const saved = await putRanges([...allowedRanges.value, range], 'add')
 	if (saved) {
-		showSuccess(t('limit_login_to_ip', 'IP range added'))
 		newRangeIP.value = ''
 		newRangeMask.value = ''
 	}
@@ -159,10 +158,7 @@ async function addRange(): Promise<void> {
  * @param index - Position of the range to remove
  */
 async function deleteRange(index: number): Promise<void> {
-	const saved = await putRanges(allowedRanges.value.filter((_, i) => i !== index), index)
-	if (saved) {
-		showSuccess(t('limit_login_to_ip', 'IP range removed'))
-	}
+	await putRanges(allowedRanges.value.filter((_, i) => i !== index), index)
 }
 
 </script>
