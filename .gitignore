@@ -2,7 +2,13 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 build
 vendor
+node_modules/
 
 .php-cs-fixer.cache
 .phpunit.result.cache
 .phpactor.json
+
+# Compiled files
+js/
+css/limit_login_to_ip-settings.css
+css/*.chunk.css

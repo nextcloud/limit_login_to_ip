@@ -39,7 +39,7 @@ To allow `127.0.0.0/24` and also `192.168.0.0/24`:
 	<screenshot>https://raw.githubusercontent.com/nextcloud/limit_login_to_ip/master/screenshots/not-authorized.png</screenshot>
 	<screenshot>https://raw.githubusercontent.com/nextcloud/limit_login_to_ip/master/screenshots/admin-settings.png</screenshot>
 	<dependencies>
-		<nextcloud min-version="31" max-version="33" />
+		<nextcloud min-version="31" max-version="34" />
 	</dependencies>
 	<settings>
 		<admin>OCA\LimitLoginToIp\Settings\LimitSettings</admin>

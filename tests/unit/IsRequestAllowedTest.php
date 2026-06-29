@@ -16,7 +16,7 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class IsRequestAllowedTest extends TestCase {
-	/** @var IConfig|MockObject */
+	/** @var IAppConfig|MockObject */
 	private $config;
 
 	/** @var IRequest|MockObject */
