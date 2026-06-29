@@ -10,12 +10,13 @@ use Behat\Behat\Context\Context;
 use GuzzleHttp\Client;
 use GuzzleHttp\Cookie\FileCookieJar;
 use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Psr7\Response;
 
 class FeatureContext implements Context {
 	/** @var  */
 	private $client;
 
-	/** @var \GuzzleHttp\Psr7\Response */
+	/** @var Response */
 	private $response;
 
 	/** @BeforeScenario */

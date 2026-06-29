@@ -12,4 +12,3 @@ declare(strict_types=1);
 	<h2><?php p($l->t('Not authorized')) ?></h2>
 	<p class="hint"><?php p('Login from your IP is not permitted.'); ?></p>
 </div>
-

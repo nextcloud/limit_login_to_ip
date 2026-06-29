@@ -19,7 +19,7 @@ return RectorConfig::configure()
 	])
 	->withPhpSets(php81: true)
 	->withTypeCoverageLevel(0)
-	->withImportNames(importShortClasses:false)
+	->withImportNames(importShortClasses: false)
 	->withPreparedSets(
 		codeQuality: true,
 		codingStyle: true,

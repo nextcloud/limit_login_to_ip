@@ -38,19 +38,15 @@ class SettingsControllerTest extends TestCase {
 		// pass the translation key straight through so we can assert on it
 		$this->l->method('t')->willReturnArgument(0);
 
-		$this->controller = new SettingsController(
-			Application::APP_ID,
-			$this->request,
-			$this->appConfig,
-			$this->l,
-		);
+		$this->controller = new SettingsController(Application::APP_ID, $this->request, $this->appConfig, $this->l);
 	}
 
 	/**
 	 * Wire up the stored-ranges read with the value the test wants to be "already saved".
 	 */
 	private function stubStored(string $stored): void {
-		$this->appConfig->method('getValueString')
+		$this->appConfig
+			->method('getValueString')
 			->with(Application::APP_ID, Application::CONFIG_KEY_RANGES, '')
 			->willReturn($stored);
 	}
@@ -58,7 +54,8 @@ class SettingsControllerTest extends TestCase {
 	public function testEmptyStoreValidRangesStoresAndEchoes(): void {
 		$this->stubStored('');
 
-		$this->appConfig->expects($this->once())
+		$this->appConfig
+			->expects($this->once())
 			->method('setValueString')
 			->with(Application::APP_ID, Application::CONFIG_KEY_RANGES, '1.2.3.4/24,10.0.0.0/8');
 
@@ -128,7 +125,8 @@ class SettingsControllerTest extends TestCase {
 		// incoming is a subset of stored, so the new set is empty -> nothing to validate
 		$this->stubStored('badtoken,1.2.3.4/24');
 
-		$this->appConfig->expects($this->once())
+		$this->appConfig
+			->expects($this->once())
 			->method('setValueString')
 			->with(Application::APP_ID, Application::CONFIG_KEY_RANGES, 'badtoken');
 
@@ -141,7 +139,8 @@ class SettingsControllerTest extends TestCase {
 	public function testIncomingEntriesAreTrimmedBeforeStoreAndEcho(): void {
 		$this->stubStored('');
 
-		$this->appConfig->expects($this->once())
+		$this->appConfig
+			->expects($this->once())
 			->method('setValueString')
 			->with(Application::APP_ID, Application::CONFIG_KEY_RANGES, '1.2.3.4/24');
 
@@ -154,7 +153,8 @@ class SettingsControllerTest extends TestCase {
 	public function testCompressedIpv6NewEntryIsAccepted(): void {
 		$this->stubStored('');
 
-		$this->appConfig->expects($this->once())
+		$this->appConfig
+			->expects($this->once())
 			->method('setValueString')
 			->with(Application::APP_ID, Application::CONFIG_KEY_RANGES, '::1/128');
 

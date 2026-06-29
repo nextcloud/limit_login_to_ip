@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 /**
  * SPDX-FileCopyrightText: 2017 Nextcloud GmbH and Nextcloud contributors
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -19,7 +20,6 @@ use OCP\Settings\IDelegatedSettings;
  * @psalm-api
  */
 class LimitSettings implements IDelegatedSettings {
-
 	public function __construct(
 		private readonly IAppConfig $appConfig,
 		private readonly IInitialState $initialState,
@@ -48,6 +48,7 @@ class LimitSettings implements IDelegatedSettings {
 	public function getName(): ?string {
 		return null;
 	}
+
 	public function getAuthorizedAppConfig(): array {
 		return [];
 	}
