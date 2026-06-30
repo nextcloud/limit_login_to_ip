@@ -1,10 +1,9 @@
 { "translations": {
-    "Delete" : "حذف",
     "Restrict login to IP addresses" : "محدود کردن ورود به آدرس‌های IP",
     "Allows administrators to restrict logins to their instance to specific IP ranges." : "به مدیران اجازه می‌دهد تا ورود به نمونه خود را به محدوده‌های IP خاص محدود کنند.",
     "This app allows administrators to restrict login to their\nNextcloud server to specific IP ranges. Note that existing sessions will be kept\nopen.\n\nThe allowed IP ranges can be administrated using the OCC command line interface\nor graphically using the admin settings. If you plan to use the OCC tool, the\nfollowing commands would be applicable.\n\nTo allow `127.0.0.0/24`:\n\n- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24`\n\nTo allow `127.0.0.0/24` and also `192.168.0.0/24`:\n\n- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24,192.168.0.0/24`" : "این برنامه به مدیران اجازه می‌دهد تا ورود به سرور نکست‌کلود خود را به محدوده‌های IP خاص محدود کنند. توجه داشته باشید که نشست‌های موجود باز نگه داشته می‌شوند.",
     "Restrict login to IP ranges" : "محدود کردن ورود به محدوده‌های IP",
-    "By default, %s permits logging-in from any IP address. To limit logins to specific IP ranges, you can specify those below." : "به طور پیش‌فرض، %s اجازه ورود از هر آدرس IP را می‌دهد. برای محدود کردن ورود به محدوده‌های IP خاص، می‌توانید آن‌ها را در زیر مشخص کنید.",
+    "Delete" : "حذف",
     "Add" : "افزودن",
     "Not authorized" : "مجاز نیست"
 },"pluralForm" :"nplurals=2; plural=(n > 1);"
