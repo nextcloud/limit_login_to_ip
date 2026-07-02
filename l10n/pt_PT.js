@@ -1,10 +1,19 @@
 OC.L10N.register(
     "limit_login_to_ip",
     {
+    "Invalid IP range(s) provided. Please ensure all ranges are in valid CIDR notation." : "Intervalo(s) de IP inválido(s) fornecido(s). Verifique se todos os intervalos estão na notação CIDR válida.",
     "Restrict login to IP addresses" : "Restringir autenticação a endereços IP",
     "Allows administrators to restrict logins to their instance to specific IP ranges." : "Permite que administradores restrinjam o acesso à sua instância através de gamas de IP específicas.",
+    "Unable to update the allowed IP ranges" : "Não foi possível atualizar os intervalos de IP permitidos",
+    "Enter an IP address" : "Insira um endereço IP",
+    "Enter a mask between 0 and {max}" : "Insira uma máscara entre 0 e {max}",
     "Restrict login to IP ranges" : "Restringir autenticação a gamas de IP ",
     "Delete" : "Apagar",
+    "Deleting {range}" : "Excluindo {range}",
+    "Delete {range}" : "Excluir {range}",
+    "Add new IP range" : "Adicionar um novo intervalo de IP",
+    "Subnet mask" : "Máscara de sub-rede",
+    "24" : "24",
     "Add" : "Adicionar",
     "Not authorized" : "Não autorizado"
 },
