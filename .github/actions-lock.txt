@@ -1,0 +1,11 @@
+# SPDX-FileCopyrightText: 2025 Nextcloud GmbH and Nextcloud contributors
+# SPDX-License-Identifier: MIT
+3c9e67bdc06a172cae6461ab6801f95e appstore-build-publish.yml
+2581a67c5bcdcd570427e6d51db767d7 fixup.yml
+660a12f14e32c1b2d24c418232d918da lint-php-cs.yml
+ee2b04d185b82fe7dd6fe6d83c6c7b45 lint-php.yml
+dad763027c0d87999474917d6818dbc9 phpunit-sqlite.yml
+d1821b8a816578070ed8fd018f321f6d pr-feedback.yml
+19d3ab0a48769d30c1cf16b53139b2f8 psalm-matrix.yml
+3975dc58817119d596a8f6ed190352ce reuse.yml
+9799b1a6a842b5c0076b76de651a0e0d sync-workflow-templates.yml
