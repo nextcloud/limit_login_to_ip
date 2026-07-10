@@ -22,6 +22,7 @@ use OCP\User\Events\BeforeUserLoggedInEvent;
  */
 class Application extends App implements IBootstrap {
 	public const APP_ID = 'limit_login_to_ip';
+
 	public const CONFIG_KEY_RANGES = 'whitelisted.ranges';
 
 	public function __construct(array $urlParams = []) {

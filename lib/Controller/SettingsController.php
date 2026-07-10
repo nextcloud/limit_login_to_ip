@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 /**
  * SPDX-FileCopyrightText: 2026 Nextcloud GmbH and Nextcloud contributors
  * SPDX-License-Identifier: AGPL-3.0-or-later
@@ -46,10 +47,10 @@ class SettingsController extends OCSController {
 	#[PasswordConfirmationRequired]
 	#[ApiRoute(verb: 'PUT', url: '/settings/ip-ranges')]
 	public function updateIpRanges(array $allowedRanges): DataResponse {
-		$allowedRanges = array_map('trim', $allowedRanges);
+		$allowedRanges = array_map(trim(...), $allowedRanges);
 
 		// only validate additions to prevent broken existing ranges from being rejected
-		$stored = array_map('trim', explode(',', $this->appConfig->getValueString(Application::APP_ID, Application::CONFIG_KEY_RANGES, '')));
+		$stored = array_map(trim(...), explode(',', $this->appConfig->getValueString(Application::APP_ID, Application::CONFIG_KEY_RANGES, '')));
 		$newEntries = array_values(array_diff($allowedRanges, $stored));
 
 		if (!$this->validateIpRanges($newEntries)) {
@@ -73,6 +74,7 @@ class SettingsController extends OCSController {
 				return false;
 			}
 		}
+
 		return true;
 	}
 
@@ -88,6 +90,7 @@ class SettingsController extends OCSController {
 		if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
 			return $mask >= 0 && $mask <= 32;
 		}
+
 		if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
 			return $mask >= 0 && $mask <= 128;
 		}

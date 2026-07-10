@@ -13,12 +13,6 @@
 	<testsuite name="Limit login to IP unit tests">
 		<directory suffix="Test.php">unit</directory>
 	</testsuite>
-	<coverage>
-		<report>
-			<!-- and this is where your report will be written -->
-			<clover outputFile="./clover.xml"/>
-		</report>
-	</coverage>
 	<logging>
 	</logging>
 </phpunit>
