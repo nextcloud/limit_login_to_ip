@@ -24,7 +24,7 @@ To allow `127.0.0.0/24` and also `192.168.0.0/24`:
 
 - `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24,192.168.0.0/24`
 ]]></description>
-	<version>4.3.0</version>
+	<version>4.4.0</version>
 	<licence>agpl</licence>
 	<author>Lukas Reschke</author>
 	<author>Benjamin Gaussorgues</author>
