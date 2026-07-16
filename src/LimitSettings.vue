@@ -4,7 +4,7 @@
 -->
 
 <script setup lang="ts">
-import { mdiTrashCanOutline } from '@mdi/js'
+import { mdiPlus, mdiTrashCanOutline } from '@mdi/js'
 import axios, { isAxiosError } from '@nextcloud/axios'
 import { showError } from '@nextcloud/dialogs'
 import { loadState } from '@nextcloud/initial-state'
@@ -12,8 +12,10 @@ import { t } from '@nextcloud/l10n'
 import { confirmPassword } from '@nextcloud/password-confirmation'
 import { generateOcsUrl } from '@nextcloud/router'
 import { ref, useTemplateRef, watch } from 'vue'
+import NcActionButton from '@nextcloud/vue/components/NcActionButton'
 import NcButton from '@nextcloud/vue/components/NcButton'
 import NcIconSvgWrapper from '@nextcloud/vue/components/NcIconSvgWrapper'
+import NcListItem from '@nextcloud/vue/components/NcListItem'
 import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
 import NcNoteCard from '@nextcloud/vue/components/NcNoteCard'
 import NcSettingsSection from '@nextcloud/vue/components/NcSettingsSection'
@@ -22,6 +24,7 @@ import { logger } from './logger.ts'
 
 const allowedRanges = ref(loadState<string[]>('limit_login_to_ip', 'allowedRanges', []))
 const instanceName = ref(loadState<string>('limit_login_to_ip', 'instanceName', ''))
+const currentIp = ref(loadState<string>('limit_login_to_ip', 'currentIp', ''))
 
 const newRangeIP = ref('')
 const newRangeMask = ref('')
@@ -167,64 +170,69 @@ async function deleteRange(index: number): Promise<void> {
 	<NcSettingsSection
 		:name="t('limit_login_to_ip', 'Restrict login to IP ranges')"
 		:description="t('limit_login_to_ip', 'By default, {entity} permits logging-in from any IP address. To limit logins to specific IP ranges, you can specify those below.', { entity: instanceName })">
-		<table v-if="allowedRanges.length" class="limit-settings__table">
-			<caption class="hidden-visually">
-				{{ t('limit_login_to_ip', 'Allowed IP ranges') }}
-			</caption>
-			<tr
+		<NcNoteCard
+			v-if="currentIp"
+			type="info">
+			{{ t('limit_login_to_ip', 'Your current IP address is detected as "{ip}".', { ip: currentIp }) }}
+		</NcNoteCard>
+		<ul
+			v-if="allowedRanges.length"
+			class="limit-settings__list"
+			:aria-label="t('limit_login_to_ip', 'Allowed IP ranges')">
+			<NcListItem
 				v-for="(range, index) in allowedRanges"
-				:key="index">
-				<td dir="ltr">
-					{{ range }}
-				</td>
-				<td>
-					<NcButton
-						variant="error"
-						:title="t('limit_login_to_ip', 'Delete')"
+				:key="index"
+				:name="range"
+				:forceDisplayActions="true">
+				<template #actions>
+					<NcActionButton
 						:aria-label="pendingAction === index
 							? t('limit_login_to_ip', 'Deleting {range}', { range })
 							: t('limit_login_to_ip', 'Delete {range}', { range })"
-						:aria-disabled="pendingAction === index"
+						:disabled="pendingAction !== null"
 						@click="deleteRange(index)">
 						<template #icon>
 							<NcLoadingIcon v-if="pendingAction === index" />
-							<NcIconSvgWrapper v-else inline :path="mdiTrashCanOutline" />
+							<NcIconSvgWrapper v-else :path="mdiTrashCanOutline" :size="20" />
 						</template>
-					</NcButton>
-				</td>
-			</tr>
-		</table>
+						{{ t('limit_login_to_ip', 'Delete') }}
+					</NcActionButton>
+				</template>
+			</NcListItem>
+		</ul>
 		<h3>{{ t('limit_login_to_ip', 'Add new IP range') }}</h3>
-		<div class="limit-settings__add" dir="ltr">
-			<div class="limit-settings__add-ip">
-				<NcTextField
-					ref="ipField"
-					v-model="newRangeIP"
-					labelOutside
-					:aria-label="t('limit_login_to_ip', 'IP range')"
-					:aria-describedby="ipError ? 'limit-settings-ip-error' : undefined"
-					:placeholder="t('limit_login_to_ip', '1.2.3.4')"
-					:error="!!ipError" />
-			</div>
-			<span class="limit-settings__add-sep" aria-hidden="true">/</span>
-			<div class="limit-settings__add-mask">
-				<NcTextField
-					ref="maskField"
-					v-model="newRangeMask"
-					type="number"
-					labelOutside
-					:aria-label="t('limit_login_to_ip', 'Subnet mask')"
-					:aria-describedby="maskError ? 'limit-settings-mask-error' : undefined"
-					:placeholder="t('limit_login_to_ip', '24')"
-					:error="!!maskError" />
+		<div class="limit-settings__add">
+			<div class="limit-settings__add-fields">
+				<div class="limit-settings__add-ip">
+					<NcTextField
+						ref="ipField"
+						v-model="newRangeIP"
+						dir="ltr"
+						:label="t('limit_login_to_ip', 'IP address')"
+						:aria-describedby="ipError ? 'limit-settings-ip-error' : undefined"
+						:placeholder="t('limit_login_to_ip', '2001:db8::')"
+						:error="!!ipError" />
+				</div>
+				<div class="limit-settings__add-mask">
+					<NcTextField
+						ref="maskField"
+						v-model="newRangeMask"
+						type="number"
+						min="0"
+						max="128"
+						:label="t('limit_login_to_ip', 'Mask')"
+						:aria-describedby="maskError ? 'limit-settings-mask-error' : undefined"
+						:placeholder="t('limit_login_to_ip', '64')"
+						:error="!!maskError" />
+				</div>
 			</div>
 			<NcButton
-				class="limit-settings__add-submit"
 				variant="secondary"
 				:aria-disabled="pendingAction === 'add'"
 				@click="addRange">
-				<template v-if="pendingAction === 'add'" #icon>
-					<NcLoadingIcon />
+				<template #icon>
+					<NcLoadingIcon v-if="pendingAction === 'add'" />
+					<NcIconSvgWrapper v-else :path="mdiPlus" :size="20" />
 				</template>
 				{{ t('limit_login_to_ip', 'Add') }}
 				<span v-if="pendingAction === 'add'" class="hidden-visually">
@@ -246,53 +254,37 @@ async function deleteRange(index: number): Promise<void> {
 </template>
 
 <style scoped>
-.limit-settings__table {
-	width: 100%;
-	border-collapse: collapse;
+.limit-settings__list {
+	display: flex;
+	flex-direction: column;
+	gap: var(--default-grid-baseline);
 	margin-block: calc(2 * var(--default-grid-baseline)) calc(3 * var(--default-grid-baseline));
-}
-
-.limit-settings__table td {
-	padding-block: calc(1.5 * var(--default-grid-baseline));
-	vertical-align: middle;
-	border-block-start: 1px solid var(--color-border);
-	border-block-end: 1px solid var(--color-border);
-}
-
-.limit-settings__table tr:last-child td {
-	border-block-end: none;
-}
-
-.limit-settings__table td:first-child {
-	width: 100%;
-	font-family: var(--font-face-monospace, monospace);
-}
-
-.limit-settings__table td:last-child {
-	text-align: end;
-	white-space: nowrap;
+	max-width: 540px;
 }
 
 .limit-settings__add {
 	display: flex;
-	align-items: center;
+	flex-direction: column;
+	align-items: flex-start;
 	gap: calc(2 * var(--default-grid-baseline));
+	max-width: 540px;
+}
+
+.limit-settings__add-fields {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	gap: calc(2 * var(--default-grid-baseline));
+	width: 100%;
 }
 
 .limit-settings__add-ip {
-	flex: 1 1 auto;
-	max-width: 280px;
+	/* Wide enough for a fully-expanded IPv6 */
+	flex: 1 1 320px;
+	max-width: 420px;
 }
 
 .limit-settings__add-mask {
-	flex: 0 0 60px;
-}
-
-.limit-settings__add-sep {
-	color: var(--color-text-maxcontrast);
-}
-
-.limit-settings__add-submit {
-	flex: 0 0 auto;
+	flex: 0 1 110px;
 }
 </style>
