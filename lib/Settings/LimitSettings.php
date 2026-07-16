@@ -14,6 +14,7 @@ use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Services\IInitialState;
 use OCP\Defaults;
 use OCP\IAppConfig;
+use OCP\IRequest;
 use OCP\Settings\IDelegatedSettings;
 
 /**
@@ -24,6 +25,7 @@ class LimitSettings implements IDelegatedSettings {
 		private readonly IAppConfig $appConfig,
 		private readonly IInitialState $initialState,
 		private readonly Defaults $defaults,
+		private readonly IRequest $request,
 	) {
 	}
 
@@ -34,6 +36,7 @@ class LimitSettings implements IDelegatedSettings {
 
 		$this->initialState->provideInitialState('allowedRanges', $allowedRangesArray);
 		$this->initialState->provideInitialState('instanceName', $entity);
+		$this->initialState->provideInitialState('currentIp', $this->request->getRemoteAddress());
 		return new TemplateResponse(Application::APP_ID, 'admin-settings');
 	}
 
