@@ -5,6 +5,8 @@ OC.L10N.register(
     "Allows administrators to restrict logins to their instance to specific IP ranges." : "Omogoča skrbnikom omejitev prijav v okolje na le izbrane obsege naslovov IP.",
     "Restrict login to IP ranges" : "Omeji prijavo na izbrane obsege naslovov IP",
     "Delete" : "Izbriši",
+    "IP address" : "Naslov IP",
+    "Mask" : "Maska",
     "Add" : "Dodaj",
     "Not authorized" : "Ni overjeno"
 },

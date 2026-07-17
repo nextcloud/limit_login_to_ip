@@ -8,6 +8,8 @@ OC.L10N.register(
     "Enter a valid IPv4 or IPv6 address" : "Zadejte platnou IPv4 nebo IPv6 adresu",
     "Restrict login to IP ranges" : "Povolit přihlašování pouze z určených rozsahů IP adres",
     "Delete" : "Smazat",
+    "IP address" : "IP adresa",
+    "Mask" : "Maska",
     "Add" : "Přidat",
     "Not authorized" : "Nemá pověření"
 },

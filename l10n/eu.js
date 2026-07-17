@@ -5,6 +5,8 @@ OC.L10N.register(
     "Allows administrators to restrict logins to their instance to specific IP ranges." : "Baimendu administratzaileei bere instantziuara saio hasierak murriztea  IP barruti zehatzei.",
     "Restrict login to IP ranges" : "Murriztu saio hasiera IP barrutiei",
     "Delete" : "Ezabatu",
+    "IP address" : "IP helbidea",
+    "Mask" : "Maskara",
     "Add" : "Gehitu",
     "Not authorized" : "Baimenik gabekoa"
 },

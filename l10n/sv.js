@@ -5,6 +5,9 @@ OC.L10N.register(
     "Allows administrators to restrict logins to their instance to specific IP ranges." : "Tillåter administratörer att begränsa inloggningar till sin instans till specifika IP-intervall.",
     "Restrict login to IP ranges" : "Begränsa inloggning till IP-området",
     "Delete" : "Ta bort",
+    "IP address" : "IP-adress",
+    "Mask" : "Mask",
+    "64" : "64",
     "Add" : "Lägg till",
     "Not authorized" : "Inte behörig"
 },

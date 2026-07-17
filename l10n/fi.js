@@ -5,6 +5,8 @@ OC.L10N.register(
     "Allows administrators to restrict logins to their instance to specific IP ranges." : "Sallii ylläpitäjien rajoittaa kirjautumisia tiettyihin IP-osoitteisiin tai -osoitealueisiin.",
     "Restrict login to IP ranges" : "Rajoita kirjautuminen IP-osoitealueisiin",
     "Delete" : "Poista",
+    "IP address" : "IP-osoite",
+    "Mask" : "Maski",
     "Add" : "Lisää",
     "Not authorized" : "Ei valtuutettu"
 },

@@ -5,6 +5,7 @@ OC.L10N.register(
     "Allows administrators to restrict logins to their instance to specific IP ranges." : "Gerir kerfisstjórum kleift að takmarka innskráningu á þjóna þeirra við röð IP-vistfanga.",
     "Restrict login to IP ranges" : "Takmarka innskráningu við röð IP-vistfanga",
     "Delete" : "Eyða",
+    "64" : "64",
     "Add" : "Bæta við",
     "Not authorized" : "Ekki heimilt"
 },

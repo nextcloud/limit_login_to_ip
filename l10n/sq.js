@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Restrict login to IP addresses" : "Hyrje e kufizuar të IP adresave ",
     "Delete" : "Fshij",
+    "64" : "64",
     "Add" : "Shto",
     "Not authorized" : "E paautorizuar"
 },

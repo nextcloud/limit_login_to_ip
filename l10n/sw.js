@@ -6,6 +6,8 @@ OC.L10N.register(
     "This app allows administrators to restrict login to their\nNextcloud server to specific IP ranges. Note that existing sessions will be kept\nopen.\n\nThe allowed IP ranges can be administrated using the OCC command line interface\nor graphically using the admin settings. If you plan to use the OCC tool, the\nfollowing commands would be applicable.\n\nTo allow `127.0.0.0/24`:\n\n- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24`\n\nTo allow `127.0.0.0/24` and also `192.168.0.0/24`:\n\n- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24,192.168.0.0/24`" : "Programu hii inaruhusu wasimamizi kuzuia kuingia kwa wao\nSeva ya Nextcloud kwa safu maalum za IP. Kumbuka kuwa vipindi vilivyopo vitahifadhiwa\nwazi.\n\nMasafa ya IP yanayoruhusiwa yanaweza kusimamiwa kwa kutumia kiolesura cha mstari wa amri cha OCC\nau kwa picha kwa kutumia mipangilio ya msimamizi. Ikiwa unapanga kutumia zana ya OCC, faili ya\namri zifuatazo zitatumika.\n\nIli kuruhusu `127.0.0.0/24`:\n\n- `occ config:app:weka limit_login_to_ip whitelisted.ranges --thamani 127.0.0.0/24`\n\nIli kuruhusu `127.0.0.0/24` na pia `192.168.0.0/24`:\n\n- `occ config:app:weka limit_login_to_ip whitelisted.ranges --thamani 127.0.0.0/24,192.168.0.0/24`",
     "Restrict login to IP ranges" : "Zuia uingiaji kwenye safu za IP",
     "Delete" : "Futa",
+    "IP address" : "Anwani ya IP",
+    "Mask" : "Maski",
     "Add" : "Ongeza",
     "Not authorized" : "Haijathibitishwa"
 },

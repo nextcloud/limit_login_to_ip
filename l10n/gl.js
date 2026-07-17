@@ -6,6 +6,8 @@ OC.L10N.register(
     "This app allows administrators to restrict login to their\nNextcloud server to specific IP ranges. Note that existing sessions will be kept\nopen.\n\nThe allowed IP ranges can be administrated using the OCC command line interface\nor graphically using the admin settings. If you plan to use the OCC tool, the\nfollowing commands would be applicable.\n\nTo allow `127.0.0.0/24`:\n\n- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24`\n\nTo allow `127.0.0.0/24` and also `192.168.0.0/24`:\n\n- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24,192.168.0.0/24`" : "Esta aplicación permite á administración do sitio restrinxir o acceso ao seu\nservidor Nextcloud a intervalos de IP específicos. Teña en conta que as sesións\nexistentes manteranse abertas.\n\nOs intervalos de IP permitidos pódense administrar mediante a interface da liña de ordes OCC\nou graficamente usando a configuración da administración do sitio. Se pensas usar a ferramenta OCC, o\nserían aplicábeis as seguintes ordes.\n\nPara permitir `127.0.0.0/24`:\n\n- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24`\n\nPara permitir `127.0.0.0/24` e tamén `192.168.0.0/24`:\n\n- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24,192.168.0.0/24`",
     "Restrict login to IP ranges" : "Limitar o acceso a intervalos IP",
     "Delete" : "Eliminar",
+    "IP address" : "Enderezo IP",
+    "Mask" : "Máscara",
     "Add" : "Engadir",
     "Not authorized" : "Non autorizado"
 },

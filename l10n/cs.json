@@ -6,6 +6,8 @@
     "Enter a valid IPv4 or IPv6 address" : "Zadejte platnou IPv4 nebo IPv6 adresu",
     "Restrict login to IP ranges" : "Povolit přihlašování pouze z určených rozsahů IP adres",
     "Delete" : "Smazat",
+    "IP address" : "IP adresa",
+    "Mask" : "Maska",
     "Add" : "Přidat",
     "Not authorized" : "Nemá pověření"
 },"pluralForm" :"nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;"

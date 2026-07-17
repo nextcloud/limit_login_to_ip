@@ -5,6 +5,7 @@ OC.L10N.register(
     "Allows administrators to restrict logins to their instance to specific IP ranges." : "Permite a los administradores restringir inicios de sesión a rangos de IPs específicos.",
     "Restrict login to IP ranges" : "Limitar inicio de sesión a rangos de IP",
     "Delete" : "Borrar",
+    "64" : "64",
     "Add" : "Agregar",
     "Not authorized" : "No autorizado"
 },
