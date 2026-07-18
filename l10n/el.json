@@ -1,13 +1,27 @@
 { "translations": {
+    "Invalid IP range(s) provided. Please ensure all ranges are in valid CIDR notation." : "Δόθηκαν μη έγκυρα εύρη IP. Βεβαιωθείτε ότι όλα τα εύρη είναι σε έγκυρη σημειογραφία CIDR.",
     "Restrict login to IP addresses" : "Περιορισμένη σύνδεση σε διευθύνσεις IP",
-    "Allows administrators to restrict logins to their instance to specific IP ranges." : "Επιτρέπει στους διαχειριστές να μην επιτρέπουν την είσοδο απο συγκεκριμένες διευθύνσεις IPs.",
+    "Allows administrators to restrict logins to their instance to specific IP ranges." : "Επιτρέπει στους διαχειριστές να περιορίζουν τις συνδέσεις στην εγκατάστασή τους σε συγκεκριμένα εύρη IP.",
     "This app allows administrators to restrict login to their\nNextcloud server to specific IP ranges. Note that existing sessions will be kept\nopen.\n\nThe allowed IP ranges can be administrated using the OCC command line interface\nor graphically using the admin settings. If you plan to use the OCC tool, the\nfollowing commands would be applicable.\n\nTo allow `127.0.0.0/24`:\n\n- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24`\n\nTo allow `127.0.0.0/24` and also `192.168.0.0/24`:\n\n- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24,192.168.0.0/24`" : "Αυτή η εφαρμογή επιτρέπει στους διαχειριστές να περιορίζουν τη σύνδεση στον\nδιακομιστή Nextcloud τους σε συγκεκριμένα εύρη IP. Σημειώστε ότι οι υπάρχουσες συνεδρίες θα παραμείνουν\nανοικτές.\n\nΤα επιτρεπόμενα εύρη IP μπορούν να διαχειριστούν χρησιμοποιώντας τη διεπαφή γραμμής εντολών OCC\nή γραφικά χρησιμοποιώντας τις ρυθμίσεις διαχειριστή. Εάν σκοπεύετε να χρησιμοποιήσετε το εργαλείο OCC, οι\nακόλουθες εντολές θα είναι εφαρμόσιμες.\n\nΓια να επιτρέψετε το `127.0.0.0/24`:\n\n- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24`\n\nΓια να επιτρέψετε το `127.0.0.0/24` και επίσης το `192.168.0.0/24`:\n\n- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24,192.168.0.0/24`",
-    "Restrict login to IP ranges" : "Περιορισμένη σύνδεση σε διευθύνσεις IP",
+    "Unable to update the allowed IP ranges" : "Δεν ήταν δυνατή η ενημέρωση των επιτρεπόμενων ευρών IP",
+    "Enter an IP address" : "Εισαγάγετε μια διεύθυνση IP",
+    "Enter a valid IPv4 or IPv6 address" : "Εισαγάγετε μια έγκυρη διεύθυνση IPv4 ή IPv6",
+    "Enter a subnet mask" : "Εισαγάγετε μια μάσκα υποδικτύου",
+    "Enter a mask between 0 and {max}" : "Εισαγάγετε μια μάσκα μεταξύ 0 και {max}",
+    "Restrict login to IP ranges" : "Περιορισμένη σύνδεση σε εύρη IP",
+    "By default, {entity} permits logging-in from any IP address. To limit logins to specific IP ranges, you can specify those below." : "Από προεπιλογή, το {entity} επιτρέπει τη σύνδεση από οποιαδήποτε διεύθυνση IP. Για να περιορίσετε τις συνδέσεις σε συγκεκριμένα εύρη IP, μπορείτε να τα ορίσετε παρακάτω.",
+    "Your current IP address is detected as \"{ip}\"." : "Η τρέχουσα διεύθυνση IP σας ανιχνεύεται ως \"{ip}\".",
+    "Allowed IP ranges" : "Επιτρεπόμενα εύρη IP",
+    "Deleting {range}" : "Γίνεται διαγραφή {range}",
+    "Delete {range}" : "Διαγραφή {range}",
     "Delete" : "Διαγραφή",
+    "Add new IP range" : "Προσθήκη νέου εύρους IP",
     "IP address" : "Διεύθυνση IP",
+    "2001:db8::" : "2001:db8::",
     "Mask" : "Μάσκα",
     "64" : "64",
     "Add" : "Προσθήκη",
-    "Not authorized" : "Μη έγκυρος"
+    "(loading)" : "(φόρτωση)",
+    "Not authorized" : "Μη εξουσιοδοτημένη πρόσβαση"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

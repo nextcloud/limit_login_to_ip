@@ -1,5 +1,8 @@
 { "translations": {
     "Delete" : "Desaniciar",
+    "IP address" : "Direición IP",
+    "Mask" : "Mázcara",
+    "64" : "64",
     "Add" : "Amestar"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
