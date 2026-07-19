@@ -1,13 +1,27 @@
 { "translations": {
+    "Invalid IP range(s) provided. Please ensure all ranges are in valid CIDR notation." : "Invalid IP range(s) provided. Please ensure all ranges are in valid CIDR notation.",
     "Restrict login to IP addresses" : "Restrict login to IP addresses",
     "Allows administrators to restrict logins to their instance to specific IP ranges." : "Allows administrators to restrict logins to their instance to specific IP ranges.",
     "This app allows administrators to restrict login to their\nNextcloud server to specific IP ranges. Note that existing sessions will be kept\nopen.\n\nThe allowed IP ranges can be administrated using the OCC command line interface\nor graphically using the admin settings. If you plan to use the OCC tool, the\nfollowing commands would be applicable.\n\nTo allow `127.0.0.0/24`:\n\n- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24`\n\nTo allow `127.0.0.0/24` and also `192.168.0.0/24`:\n\n- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24,192.168.0.0/24`" : "This app allows administrators to restrict login to their\nNextcloud server to specific IP ranges. Note that existing sessions will be kept\nopen.\n\nThe allowed IP ranges can be administrated using the OCC command line interface\nor graphically using the admin settings. If you plan to use the OCC tool, the\nfollowing commands would be applicable.\n\nTo allow `127.0.0.0/24`:\n\n- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24`\n\nTo allow `127.0.0.0/24` and also `192.168.0.0/24`:\n\n- `occ config:app:set limit_login_to_ip whitelisted.ranges --value 127.0.0.0/24,192.168.0.0/24`",
+    "Unable to update the allowed IP ranges" : "Unable to update the allowed IP ranges",
+    "Enter an IP address" : "Enter an IP address",
+    "Enter a valid IPv4 or IPv6 address" : "Enter a valid IPv4 or IPv6 address",
+    "Enter a subnet mask" : "Enter a subnet mask",
+    "Enter a mask between 0 and {max}" : "Enter a mask between 0 and {max}",
     "Restrict login to IP ranges" : "Restrict login to IP ranges",
+    "By default, {entity} permits logging-in from any IP address. To limit logins to specific IP ranges, you can specify those below." : "By default, {entity} permits logging-in from any IP address. To limit logins to specific IP ranges, you can specify those below.",
+    "Your current IP address is detected as \"{ip}\"." : "Your current IP address is detected as \"{ip}\".",
+    "Allowed IP ranges" : "Allowed IP ranges",
+    "Deleting {range}" : "Deleting {range}",
+    "Delete {range}" : "Delete {range}",
     "Delete" : "Delete",
+    "Add new IP range" : "Add new IP range",
     "IP address" : "IP address",
+    "2001:db8::" : "2001:db8::",
     "Mask" : "Mask",
     "64" : "64",
     "Add" : "Add",
+    "(loading)" : "(loading)",
     "Not authorized" : "Not authorised"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
