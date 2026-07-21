@@ -4,7 +4,7 @@
 -->
 
 <script setup lang="ts">
-import { mdiPlus, mdiTrashCanOutline } from '@mdi/js'
+import { mdiTrashCanOutline } from '@mdi/js'
 import axios, { isAxiosError } from '@nextcloud/axios'
 import { showError } from '@nextcloud/dialogs'
 import { loadState } from '@nextcloud/initial-state'
@@ -230,9 +230,8 @@ async function deleteRange(index: number): Promise<void> {
 				variant="secondary"
 				:aria-disabled="pendingAction === 'add'"
 				@click="addRange">
-				<template #icon>
-					<NcLoadingIcon v-if="pendingAction === 'add'" />
-					<NcIconSvgWrapper v-else :path="mdiPlus" :size="20" />
+				<template v-if="pendingAction === 'add'" #icon>
+					<NcLoadingIcon />
 				</template>
 				{{ t('limit_login_to_ip', 'Add') }}
 				<span v-if="pendingAction === 'add'" class="hidden-visually">
