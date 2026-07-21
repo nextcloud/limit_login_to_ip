@@ -10,10 +10,18 @@
     "Enter a mask between 0 and {max}" : "輸入介於 0 到 {max} 間的遮罩",
     "Restrict login to IP ranges" : "限定登入的 IP 區段",
     "By default, {entity} permits logging-in from any IP address. To limit logins to specific IP ranges, you can specify those below." : "{entity}預設允許任何 IP 位址登入，若想要限制特定 IP 才能登入，可以在下方指定",
+    "Your current IP address is detected as \"{ip}\"." : "目前偵測到你的 IP 位址為「{ip}」。",
+    "Allowed IP ranges" : "允許的 IP 範圍",
+    "Deleting {range}" : "正在刪除 {range}",
+    "Delete {range}" : "刪除 {range}",
     "Delete" : "刪除",
+    "Add new IP range" : "新增 IP 範圍",
     "IP address" : "IP 地址",
+    "2001:db8::" : "2001:db8::",
     "Mask" : "掩碼",
+    "64" : "64",
     "Add" : "新增",
+    "(loading)" : "（載入中）",
     "Not authorized" : "尚未授權"
 },"pluralForm" :"nplurals=1; plural=0;"
 }
