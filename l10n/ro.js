@@ -4,6 +4,7 @@ OC.L10N.register(
     "Restrict login to IP addresses" : "Limitați conectarea la adresele IP",
     "Allows administrators to restrict logins to their instance to specific IP ranges." : "Permite administratorilor să restricționeze conectările la instanța lor la anumite intervale de IP.",
     "Restrict login to IP ranges" : "Limitați conectarea la intervalele IP",
+    "Delete {range}" : "Șterge {range}",
     "Delete" : "Șterge",
     "Add" : "Adaugă",
     "Not authorized" : "Neautorizat"
