@@ -7,6 +7,8 @@ OC.L10N.register(
     "Enter an IP address" : "Zadejte IP adresu",
     "Enter a valid IPv4 or IPv6 address" : "Zadejte platnou IPv4 nebo IPv6 adresu",
     "Restrict login to IP ranges" : "Povolit přihlašování pouze z určených rozsahů IP adres",
+    "Deleting {range}" : "Mazání {range}",
+    "Delete {range}" : "Smazat {range}",
     "Delete" : "Smazat",
     "IP address" : "IP adresa",
     "2001:db8::" : "2001:db8::",
