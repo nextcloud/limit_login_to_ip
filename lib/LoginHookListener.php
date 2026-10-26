@@ -12,18 +12,20 @@ namespace OCA\LimitLoginToIp;
 use OCP\EventDispatcher\Event;
 use OCP\EventDispatcher\IEventListener;
 use OCP\User\Events\BeforeUserLoggedInEvent;
+use Override;
 use Psr\Log\LoggerInterface;
 
 /**
  * @template-implements IEventListener<Event>
  */
-class LoginHookListener implements IEventListener {
+final readonly class LoginHookListener implements IEventListener {
 	public function __construct(
-		private readonly IsRequestAllowed $isRequestAllowed,
-		private readonly LoggerInterface $logger,
+		private IsRequestAllowed $isRequestAllowed,
+		private LoggerInterface $logger,
 	) {
 	}
 
+	#[Override]
 	public function handle(Event $event): void {
 		if (!$event instanceof BeforeUserLoggedInEvent || ($this->isRequestAllowed)()) {
 			return;

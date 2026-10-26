@@ -15,6 +15,7 @@ use OCA\LimitLoginToIp\Exception\ForbiddenLoginException;
 use OCA\LimitLoginToIp\IsRequestAllowed;
 use OCP\AppFramework\Middleware;
 use OCP\IURLGenerator;
+use Override;
 
 /**
  * Checks whether the "sharing check" is enabled
@@ -35,9 +36,10 @@ class CanSeeLoginPageMiddleware extends Middleware {
 	) {
 	}
 
+	#[Override]
 	public function beforeController($controller, $methodName): void {
 		// Only filter login actions
-		/** @psalm-suppress all */
+		/** @psalm-suppress UndefinedClass,TypeDoesNotContainType,RedundantCondition */
 		if (!$controller instanceof LoginController || !in_array($methodName, self::LOGIN_METHOD_NAMES, true)) {
 			return;
 		}
@@ -47,6 +49,7 @@ class CanSeeLoginPageMiddleware extends Middleware {
 		}
 	}
 
+	#[Override]
 	public function afterException($controller, $methodName, Exception $exception): void {
 		if (!$exception instanceof ForbiddenLoginException) {
 			throw $exception;
