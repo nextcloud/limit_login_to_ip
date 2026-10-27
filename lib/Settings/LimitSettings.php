@@ -16,6 +16,7 @@ use OCP\Defaults;
 use OCP\IAppConfig;
 use OCP\IRequest;
 use OCP\Settings\IDelegatedSettings;
+use Override;
 
 /**
  * @psalm-api
@@ -29,6 +30,7 @@ class LimitSettings implements IDelegatedSettings {
 	) {
 	}
 
+	#[Override]
 	public function getForm(): TemplateResponse {
 		$entity = $this->defaults->getEntity();
 		$allowedRanges = $this->appConfig->getValueString(Application::APP_ID, Application::CONFIG_KEY_RANGES, '');
@@ -40,18 +42,22 @@ class LimitSettings implements IDelegatedSettings {
 		return new TemplateResponse(Application::APP_ID, 'admin-settings');
 	}
 
+	#[Override]
 	public function getSection(): string {
 		return 'security';
 	}
 
+	#[Override]
 	public function getPriority(): int {
 		return 50;
 	}
 
+	#[Override]
 	public function getName(): ?string {
 		return null;
 	}
 
+	#[Override]
 	public function getAuthorizedAppConfig(): array {
 		return [];
 	}

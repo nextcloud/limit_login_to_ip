@@ -16,6 +16,7 @@ use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Bootstrap\IBootstrap;
 use OCP\AppFramework\Bootstrap\IRegistrationContext;
 use OCP\User\Events\BeforeUserLoggedInEvent;
+use Override;
 
 /**
  * @psalm-api
@@ -29,15 +30,13 @@ class Application extends App implements IBootstrap {
 		parent::__construct(self::APP_ID, $urlParams);
 	}
 
+	#[Override]
 	public function register(IRegistrationContext $context): void {
 		$context->registerMiddleware(CanSeeLoginPageMiddleware::class, true);
-		$context->registerEventListener(
-			BeforeUserLoggedInEvent::class,
-			LoginHookListener::class,
-			50
-		);
+		$context->registerEventListener(BeforeUserLoggedInEvent::class, LoginHookListener::class, 50);
 	}
 
+	#[Override]
 	public function boot(IBootContext $context): void {
 	}
 }
